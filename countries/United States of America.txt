@@ -1,0 +1,768 @@
+Faribault United States of America
+Mankato United States of America
+Albert Lea United States of America
+Willmar United States of America
+Brainerd United States of America
+Crookston United States of America
+Hardin United States of America
+Glendive United States of America
+Dillon United States of America
+Polson United States of America
+Devils Lake United States of America
+Burley United States of America
+Wallace United States of America
+Kennewick United States of America
+Centralia United States of America
+Glendale United States of America
+Safford United States of America
+Casa Grande United States of America
+Mesa United States of America
+Lake Havasu City United States of America
+Berkeley United States of America
+National City United States of America
+Mendocino United States of America
+Paso Robles United States of America
+Riverside United States of America
+Delano United States of America
+San Mateo United States of America
+Vallejo United States of America
+Glenwood Springs United States of America
+Aurora United States of America
+Greeley United States of America
+Tonopah United States of America
+Deming United States of America
+Truth or Consequences United States of America
+Las Vegas United States of America
+Farmington United States of America
+Springfield United States of America
+Tillamook United States of America
+Ontario United States of America
+La Grande United States of America
+Richfield United States of America
+Nephi United States of America
+Lander United States of America
+Powell United States of America
+Paragould United States of America
+Iowa City United States of America
+Ottumwa United States of America
+Spencer United States of America
+Ft. Dodge United States of America
+Hutchinson United States of America
+Kansas City United States of America
+Lawrence United States of America
+Garden City United States of America
+Manhattan United States of America
+Hays United States of America
+Goodland United States of America
+Independence United States of America
+Kirksville United States of America
+Kearney United States of America
+Grand Island United States of America
+Alliance United States of America
+Bartlesville United States of America
+Enid United States of America
+Ardmore United States of America
+McAlester United States of America
+Stillwater United States of America
+Lead United States of America
+Slidell United States of America
+Lake Charles United States of America
+Metairie United States of America
+New Iberia United States of America
+Bryan United States of America
+San Marcos United States of America
+Longview United States of America
+McAllen United States of America
+Harlingen United States of America
+Alice United States of America
+New Braunfels United States of America
+Cleburne United States of America
+Brownwood United States of America
+Alpine United States of America
+Van Horn United States of America
+Big Spring United States of America
+Vernon United States of America
+Childress United States of America
+Hereford United States of America
+Dalhart United States of America
+Texas City United States of America
+Pasadena United States of America
+Baytown United States of America
+Grand Prairie United States of America
+New London United States of America
+Stamford United States of America
+Waterbury United States of America
+New Bedford United States of America
+Springfield United States of America
+Salem United States of America
+Pittsfield United States of America
+Montpelier United States of America
+Auburn United States of America
+Florence United States of America
+Winter Haven United States of America
+Melbourne United States of America
+Homestead United States of America
+Sanford United States of America
+Miami Beach United States of America
+Coral Springs United States of America
+Port Charlotte United States of America
+Spring Hill United States of America
+Palm Coast United States of America
+Palatka United States of America
+Leesburg United States of America
+Lake City United States of America
+Crestview United States of America
+Panama City United States of America
+Dalton United States of America
+Marietta United States of America
+Waycross United States of America
+La Grange United States of America
+Southaven United States of America
+Meridian United States of America
+Laurel United States of America
+Spartanburg United States of America
+Orangeburg United States of America
+Galesburg United States of America
+Joliet United States of America
+Cape Girardeau United States of America
+Rockford United States of America
+Evanston United States of America
+Rock Island United States of America
+Elgin United States of America
+Richmond United States of America
+Terre Haute United States of America
+Lafayette United States of America
+Marion United States of America
+South Bend United States of America
+New Albany United States of America
+Elkhart United States of America
+Hopkinsville United States of America
+London United States of America
+Madisonville United States of America
+Rocky Mount United States of America
+Salisbury United States of America
+Durham United States of America
+Lumberton United States of America
+Zanesville United States of America
+Mansfield United States of America
+Bowling Green United States of America
+Springfield United States of America
+Lancaster United States of America
+Johnson City United States of America
+Kingsport United States of America
+Columbia United States of America
+Barlett United States of America
+Blacksburg United States of America
+Harrisonburg United States of America
+Petersburg United States of America
+Hampton United States of America
+Sheboygan United States of America
+Waukesha United States of America
+La Crosse United States of America
+Eau Claire United States of America
+Tomah United States of America
+Janesville United States of America
+Appleton United States of America
+Parkersburg United States of America
+White Sulphur Springs United States of America
+Clarksburg United States of America
+Dover United States of America
+St. Charles United States of America
+Annapolis United States of America
+Hagerstown United States of America
+Paterson United States of America
+Saratoga Springs United States of America
+Poughkeepsie United States of America
+Plattsburg United States of America
+Beaver Falls United States of America
+Altoona United States of America
+Williamsport United States of America
+Lancaster United States of America
+Allentown United States of America
+Waterville United States of America
+Calais United States of America
+Houlton United States of America
+Benton Harbor United States of America
+Battle Creek United States of America
+Bay City United States of America
+Alpena United States of America
+Iron Mountain United States of America
+Ironwood United States of America
+Sand Point United States of America
+Hydaburg United States of America
+Mekoryuk United States of America
+Atqasuk United States of America
+Port Heiden United States of America
+Perryville United States of America
+Dillingham United States of America
+Goodnews Bay United States of America
+Nyac United States of America
+Tununak United States of America
+Mountain Village United States of America
+Emmonak United States of America
+Kaltag United States of America
+Teller United States of America
+Koyukuk United States of America
+Kobuk United States of America
+Selawik United States of America
+Talkeetna United States of America
+Whittier United States of America
+Montana United States of America
+Lake Minchumina United States of America
+Cantwell United States of America
+Gulkana United States of America
+Eagle United States of America
+Nenana United States of America
+Big Delta United States of America
+Allakaket United States of America
+Tanana United States of America
+Virginia United States of America
+Winona United States of America
+Rochester United States of America
+Lakeville United States of America
+Ely United States of America
+Moorhead United States of America
+St. Cloud United States of America
+Miles City United States of America
+Bozeman United States of America
+Glasgow United States of America
+Dickinson United States of America
+Jamestown United States of America
+Williston United States of America
+Lihue United States of America
+Wahiawa United States of America
+Wailuku United States of America
+Montpelier United States of America
+Twin Falls United States of America
+Caldwell United States of America
+Salmon United States of America
+Coeur d'Alene United States of America
+Richland United States of America
+Bellingham United States of America
+Longview United States of America
+Walla Walla United States of America
+Aberdeen United States of America
+Bremerton United States of America
+Everett United States of America
+Bullhead City United States of America
+Winslow United States of America
+Gila Bend United States of America
+Tombstone United States of America
+Willcox United States of America
+Scottsdale United States of America
+Kingman United States of America
+Grand Canyon United States of America
+Arcata United States of America
+Stockton United States of America
+Barstow United States of America
+Victoriaville United States of America
+Pasadena United States of America
+Visalia United States of America
+El Centro United States of America
+San Luis Obispo United States of America
+Merced United States of America
+Yuba City United States of America
+Redding United States of America
+Santa Rosa United States of America
+Oceanside United States of America
+Modesto United States of America
+Irvine United States of America
+Ukiah United States of America
+Needles United States of America
+Bishop United States of America
+Palm Springs United States of America
+Santa Maria United States of America
+Tulare United States of America
+Mt. Shasta United States of America
+Crescent City United States of America
+Fort Collins United States of America
+Pueblo United States of America
+Lamar United States of America
+Trinidad United States of America
+Gunnison United States of America
+Durango United States of America
+Montrose United States of America
+Craig United States of America
+Boulder United States of America
+Boulder City United States of America
+Winnemucca United States of America
+Roswell United States of America
+Clovis United States of America
+Las Cruces United States of America
+Hobbs United States of America
+Socorro United States of America
+Gallup United States of America
+Raton United States of America
+Tucumcari United States of America
+Roseburg United States of America
+Pendleton United States of America
+John Day United States of America
+Grants Pass United States of America
+Corvallis United States of America
+Albany United States of America
+Astoria United States of America
+Logan United States of America
+Parowan United States of America
+Kanab United States of America
+Monticello United States of America
+Moab United States of America
+Price United States of America
+Cedar City United States of America
+Vernal United States of America
+Ogden United States of America
+Green River United States of America
+Rawlins United States of America
+Douglas United States of America
+Riverton United States of America
+Thermopolis United States of America
+Gillette United States of America
+Jonesboro United States of America
+Texarkana United States of America
+Pine Bluff United States of America
+Hot Springs United States of America
+Fort Smith United States of America
+Fayetteville United States of America
+Conway United States of America
+El Dorado United States of America
+Davenport United States of America
+Burlington United States of America
+Dubuque United States of America
+Waterloo United States of America
+Sioux City United States of America
+Council Bluffs United States of America
+Ames United States of America
+Mason City United States of America
+Emporia United States of America
+Salina United States of America
+Dodge City United States of America
+Coffeyville United States of America
+St. Charles United States of America
+Poplar Bluff United States of America
+Joplin United States of America
+Columbia United States of America
+St. Joseph United States of America
+McCook United States of America
+Norfolk United States of America
+North Platte United States of America
+Sidney United States of America
+Scottsbluff United States of America
+Chadron United States of America
+Lawton United States of America
+Norman United States of America
+Muskogee United States of America
+Ponca City United States of America
+Shawnee United States of America
+Woodward United States of America
+Guymon United States of America
+Yankton United States of America
+Brookings United States of America
+Mitchell United States of America
+Aberdeen United States of America
+Mobridge United States of America
+Houma United States of America
+Monroe United States of America
+Conroe United States of America
+Nacogdoches United States of America
+Eagle Pass United States of America
+Edinburg United States of America
+Kingsville United States of America
+Port Arthur United States of America
+Huntsville United States of America
+Killeen United States of America
+Lufkin United States of America
+Del Rio United States of America
+San Angelo United States of America
+Sherman United States of America
+Beaumont United States of America
+Bay City United States of America
+Port Lavaca United States of America
+Falfurrias United States of America
+Beeville United States of America
+Fort Stockton United States of America
+Pecos United States of America
+Dumas United States of America
+Denton United States of America
+Midland United States of America
+Temple United States of America
+New Haven United States of America
+Lowell United States of America
+Worcester United States of America
+Manchester United States of America
+Newport United States of America
+Dothan United States of America
+Tuscaloosa United States of America
+Gadsden United States of America
+Enterprise United States of America
+Selma United States of America
+Coral Gables United States of America
+Cape Coral United States of America
+Naples United States of America
+Fort Pierce United States of America
+Kissimmee United States of America
+Titusville United States of America
+St. Augustine United States of America
+Ocala United States of America
+Fort Lauderdale United States of America
+Apalachicola United States of America
+Vero Beach United States of America
+Valdosta United States of America
+Albany United States of America
+Athens United States of America
+Macon United States of America
+Columbus United States of America
+Douglas United States of America
+Dublin United States of America
+Gulfport United States of America
+Hattiesburg United States of America
+Tupelo United States of America
+Greenville United States of America
+Natchez United States of America
+Florence United States of America
+Greenville United States of America
+Sumter United States of America
+Anderson United States of America
+Aiken United States of America
+Beaufort United States of America
+Rock Hill United States of America
+Decatur United States of America
+Alton United States of America
+Quincy United States of America
+Urbana United States of America
+Bloomington United States of America
+Kankakee United States of America
+Waukegan United States of America
+Aurora United States of America
+Carbondale United States of America
+Belleville United States of America
+Bloomington United States of America
+Muncie United States of America
+Kokomo United States of America
+Gary United States of America
+Fort Wayne United States of America
+Covington United States of America
+Bowling Green United States of America
+Paducah United States of America
+Owensboro United States of America
+Jacksonville United States of America
+Goldsboro United States of America
+Greenville United States of America
+Fayetteville United States of America
+Hickory United States of America
+Asheville United States of America
+Winston-Salem United States of America
+Kitty Hawk United States of America
+Akron United States of America
+Lima United States of America
+Oak Ridge United States of America
+Murfreesboro United States of America
+Clarksville United States of America
+Jackson United States of America
+Alexandria United States of America
+Fredericksburg United States of America
+Roanoke United States of America
+Danville United States of America
+Winchester United States of America
+Bristol United States of America
+Superior United States of America
+West Bend United States of America
+Fond du Lac United States of America
+Oshkosh United States of America
+Rhinelander United States of America
+Racine United States of America
+Marinette United States of America
+Wheeling United States of America
+Morgantown United States of America
+Huntington United States of America
+Beckley United States of America
+Wilmington United States of America
+Cumberland United States of America
+Atlantic City United States of America
+Newark United States of America
+Schenectady United States of America
+Binghamton United States of America
+Utica United States of America
+Watertown United States of America
+Niagara Falls United States of America
+Jamestown United States of America
+Elmira United States of America
+York United States of America
+Johnstown United States of America
+Scranton United States of America
+State College United States of America
+Erie United States of America
+Wilkes Barre United States of America
+Bar Harbor United States of America
+Lewiston United States of America
+Presque Isle United States of America
+Ann Arbor United States of America
+Kalamazoo United States of America
+Muskegon United States of America
+Flint United States of America
+Grand Rapids United States of America
+Pontiac United States of America
+Cadillac United States of America
+Traverse City United States of America
+Petoskey United States of America
+Escanaba United States of America
+Marquette United States of America
+Hancock United States of America
+Wrangell United States of America
+Shishmaref United States of America
+Hoonah United States of America
+Atka United States of America
+Nikolski United States of America
+Karluk United States of America
+False Pass United States of America
+Kivalina United States of America
+Newhalen United States of America
+Pilot Point United States of America
+Chignik United States of America
+King Salmon United States of America
+Quinhagak United States of America
+Aniak United States of America
+Kotlit United States of America
+Unalakleet United States of America
+Koyuk United States of America
+McGrath United States of America
+Hughes United States of America
+Ambler United States of America
+Wales United States of America
+Kotzebue United States of America
+Wasilla United States of America
+Circle United States of America
+Denali Park United States of America
+Yakutat United States of America
+Homer United States of America
+Tanacross United States of America
+Wiseman United States of America
+Kailua-Kona United States of America
+Butte United States of America
+Grand Forks United States of America
+Pocatello United States of America
+Tacoma United States of America
+Yuma United States of America
+Prescott United States of America
+Long Beach United States of America
+Grand Junction United States of America
+Ely United States of America
+Carson City United States of America
+Carlsbad United States of America
+Alamogordo United States of America
+Medford United States of America
+Klamath Falls United States of America
+St. George United States of America
+Provo United States of America
+Laramie United States of America
+Little Rock United States of America
+Wichita United States of America
+Jefferson City United States of America
+Rapid City United States of America
+Lafayette United States of America
+Galveston United States of America
+Freeport United States of America
+Victoria United States of America
+Odessa United States of America
+Wichita Falls United States of America
+Waco United States of America
+Lubbock United States of America
+Hartford United States of America
+Providence United States of America
+Birmingham United States of America
+Mobile United States of America
+Pensacola United States of America
+St. Petersburg United States of America
+Biloxi United States of America
+Springfield United States of America
+Frankfort United States of America
+Greensboro United States of America
+Dayton United States of America
+Virginia Beach United States of America
+Madison United States of America
+Green Bay United States of America
+Trenton United States of America
+Lansing United States of America
+Gambell United States of America
+Palmer United States of America
+Seward United States of America
+Duluth United States of America
+Bemidji United States of America
+Havre United States of America
+Kalispell United States of America
+Idaho Falls United States of America
+Lewiston United States of America
+Yakima United States of America
+Wenatchee United States of America
+Douglas United States of America
+Bakersfield United States of America
+Oakland United States of America
+Lancaster United States of America
+Chico United States of America
+Monterey United States of America
+Salinas United States of America
+Los Alamos United States of America
+Eugene United States of America
+Coos Bay United States of America
+Bend United States of America
+Cody United States of America
+Cedar Rapids United States of America
+Springfield United States of America
+Lincoln United States of America
+Alexandria United States of America
+Abilene United States of America
+Brownsville United States of America
+Tyler United States of America
+Concord United States of America
+Huntsville United States of America
+Key West United States of America
+West Palm Beach United States of America
+Sarasota United States of America
+Daytona Beach United States of America
+Gainesville United States of America
+Ft. Myers United States of America
+Brunswick United States of America
+Augusta United States of America
+Vicksburg United States of America
+Myrtle Beach United States of America
+Charleston United States of America
+Peoria United States of America
+Evansville United States of America
+Louisville United States of America
+Lexington United States of America
+Charlotte United States of America
+Youngstown United States of America
+Canton United States of America
+Toledo United States of America
+Columbus United States of America
+Chattanooga United States of America
+Charlottesville United States of America
+Lynchburg United States of America
+Wausau United States of America
+Albany United States of America
+Ithaca United States of America
+Harrisburg United States of America
+Bangor United States of America
+Portland United States of America
+Saginaw United States of America
+Ketchikan United States of America
+Unalaska United States of America
+Togiak United States of America
+Red Devil United States of America
+Hooper Bay United States of America
+Wainwright United States of America
+Galena United States of America
+Kaktovik United States of America
+Skagway United States of America
+Cordova United States of America
+Kenai United States of America
+Fort Yukon United States of America
+Santa Cruz United States of America
+San Bernardino United States of America
+Bridgeport United States of America
+Rochester United States of America
+International Falls United States of America
+St. Paul United States of America
+Billings United States of America
+Great Falls United States of America
+Missoula United States of America
+Minot United States of America
+Fargo United States of America
+Hilo United States of America
+Olympia United States of America
+Spokane United States of America
+Vancouver United States of America
+Flagstaff United States of America
+Tucson United States of America
+Santa Barbara United States of America
+Fresno United States of America
+Eureka United States of America
+Colorado Springs United States of America
+Reno United States of America
+Elko United States of America
+Albuquerque United States of America
+Salem United States of America
+Casper United States of America
+Topeka United States of America
+Kansas City United States of America
+Tulsa United States of America
+Sioux Falls United States of America
+Shreveport United States of America
+Baton Rouge United States of America
+Ft. Worth United States of America
+Corpus Christi United States of America
+Austin United States of America
+Amarillo United States of America
+El Paso United States of America
+Laredo United States of America
+Burlington United States of America
+Montgomery United States of America
+Tallahassee United States of America
+Orlando United States of America
+Jacksonville United States of America
+Savannah United States of America
+Columbia United States of America
+Indianapolis United States of America
+Wilmington United States of America
+Knoxville United States of America
+Richmond United States of America
+Charleston United States of America
+Baltimore United States of America
+Syracuse United States of America
+Augusta United States of America
+Sault Ste. Marie United States of America
+Sitka United States of America
+Helena United States of America
+Bismarck United States of America
+Boise United States of America
+San Jose United States of America
+Sacramento United States of America
+Las Vegas United States of America
+Santa Fe United States of America
+Portland United States of America
+Salt Lake City United States of America
+Cheyenne United States of America
+Des Moines United States of America
+Omaha United States of America
+Oklahoma City United States of America
+Pierre United States of America
+San Antonio United States of America
+Jackson United States of America
+Raleigh United States of America
+Cleveland United States of America
+Cincinnati United States of America
+Nashville United States of America
+Memphis United States of America
+Norfolk United States of America
+Milwaukee United States of America
+Buffalo United States of America
+Pittsburgh United States of America
+Kodiak United States of America
+Cold Bay United States of America
+Bethel United States of America
+Point Hope United States of America
+Barrow United States of America
+Nome United States of America
+Valdez United States of America
+Juneau United States of America
+Fairbanks United States of America
+Prudhoe Bay United States of America
+Minneapolis United States of America
+Honolulu United States of America
+Seattle United States of America
+Phoenix United States of America
+San Diego United States of America
+St. Louis United States of America
+New Orleans United States of America
+Dallas United States of America
+Boston United States of America
+Tampa United States of America
+Philadelphia United States of America
+Detroit United States of America
+Anchorage United States of America
+San Francisco United States of America
+Denver United States of America
+Houston United States of America
+Miami United States of America
+Atlanta United States of America
+Chicago United States of America
+Los Angeles United States of America
+New York United States of America
