@@ -11,7 +11,7 @@ name=WeatherInfo
 qgisMinimumVersion=2.99
 qgisMaximumVersion=3.99
 description=Weather Info
-version=0.2
+version=0.1
 author=Marios S. Kyriakou, George A. Christou, KIOS Research and Innovation Center of Excellence (KIOS CoE)
 email=mariosmsk@gmail.com, george.a.christou@gmail.com
 
@@ -23,7 +23,7 @@ repository=https://github.com/KIOS-Research/WeatherInfo/
 
 # Recommended items:
 # Uncomment the following line and add your changelog:
-changelog=2018-06-05  WeatherInfo 0.2:
+changelog=2018-06-05  WeatherInfo 0.1:
 		Add a comboBox with countries. Change link repository.
 		
 # Tags are comma separated with spaces allowed
@@ -31,9 +31,9 @@ tags=weather, temperature, wind direction, wind speed, humidity, pressure, visib
 
 homepage=https://github.com/KIOS-Research/WeatherInfo/
 category=Plugins
-icon=./icons/weather.png
+icon=weather.png
 # experimental flag
-experimental=False
+experimental=false
 
 # deprecated flag (applies to the whole plugin, not just a single version)
-deprecated=False
+deprecated=false
