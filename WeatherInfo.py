@@ -229,7 +229,7 @@ class WeatherInfo:
         self.dlg.closebutton.setEnabled(True)
         self.dlg.toolButtonImport.setEnabled(True)
         if self.csvFile==None:
-            self.csvFile = self.plugin_dir + '/World.txt'
+            self.csvFile = self.plugin_dir + '/database/World.txt'
         self.dlg.imp.setText(self.csvFile)
 
         self.dlg.progressBar.setValue(0)
@@ -238,8 +238,8 @@ class WeatherInfo:
         self.customBox()
 
         self.dlg.comboBox.clear()
-        db_list = []
-        for root, dirnames, filenames in os.walk(self.plugin_dir+'\\countries'):
+        db_list = ['World']
+        for root, dirnames, filenames in os.walk(self.plugin_dir+'\\database'):
             for filename in filenames:
                 if filename.endswith(('.txt')):
                     db_list.append(os.path.basename(filename)[0:-4])
@@ -280,7 +280,7 @@ class WeatherInfo:
             self.reload = False
 
         if not self.dlg.checkBox.isChecked():
-            self.csvFile =  self.plugin_dir + '\\countries\\'+str(self.dlg.comboBox.currentText())+'.txt'
+            self.csvFile =  self.plugin_dir + '\\database\\'+str(self.dlg.comboBox.currentText())+'.txt'
 
         self.outWeatherGeoJson = self.plugin_dir + '\\WeatherInfo.geojson'
         basename = os.path.basename(self.outWeatherGeoJson)
