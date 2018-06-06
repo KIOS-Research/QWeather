@@ -33,7 +33,7 @@ homepage=https://github.com/KIOS-Research/WeatherInfo/
 category=Plugins
 icon=weather.png
 # experimental flag
-experimental=false
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
-deprecated=false
+deprecated=False

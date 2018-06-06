@@ -176,7 +176,7 @@ class WeatherInfo:
             parent=self.iface.mainWindow())
 
         icon_path = ':/plugins/WeatherInfo/icons/reload.png'
-        self.add_action(
+        self.reloadButton = self.add_action(
             icon_path,
             text=self.tr(u'Reload weather layer'),
             callback=self.reloadweather,
@@ -194,6 +194,7 @@ class WeatherInfo:
         self.layerTemp = "WeatherInfo"
         self.reload = False
         self.dlg.checkBox.setChecked(True)
+        self.reloadButton.setEnabled(False)
 
     def reloadweather(self):
         #if len(QgsProject.instance().mapLayersByName(self.layerTemp)) != 0:
@@ -329,6 +330,8 @@ class WeatherInfo:
             self.unitHumidity = " %"
             self.unitVisibility = " km"
             self.unitPressure = " hPa"
+            self.style = 'weather_c'
+
         else:
             self.unit = 'F'
             self.unitDirection = " degrees"
@@ -336,6 +339,7 @@ class WeatherInfo:
             self.unitHumidity = " %"
             self.unitVisibility = " mi"
             self.unitPressure = " psi"
+            self.style = 'weather_f'
 
         data = self.callQuery()
         self.createJsonFiles(data, f_weather)
@@ -346,6 +350,7 @@ class WeatherInfo:
         self.dlg.ok.setEnabled(True)
         self.dlg.closebutton.setEnabled(True)
         self.dlg.toolButtonImport.setEnabled(True)
+        self.reloadButton.setEnabled(True)
 
     def createJsonFiles(self, data, f_weather):
 
@@ -419,7 +424,8 @@ class WeatherInfo:
         def addWeatherLayer():
             self.weather = self.iface.addVectorLayer(self.outWeatherGeoJson,
                                                           self.layerTemp, "ogr")
-            self.weather.loadNamedStyle(self.plugin_dir + "/icons/weather.qml")
+            self.weather.loadNamedStyle(self.plugin_dir + "/icons/"+self.style+".qml")
+
             self.weather.setReadOnly()
 
         if len(QgsProject.instance().mapLayersByName(self.layerTemp)) == 0:
