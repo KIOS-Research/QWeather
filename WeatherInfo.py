@@ -200,7 +200,7 @@ class WeatherInfo:
         #if len(QgsProject.instance().mapLayersByName(self.layerTemp)) != 0:
         self.reload = True
         if self.csvFile==None:
-            self.csvFile = self.plugin_dir + '\\World.txt'
+            self.csvFile = self.plugin_dir + '/database/World.txt'
         self.dlg.imp.setText(self.csvFile)
         self.ok()
 
