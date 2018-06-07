@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- Weather
+ QWeather
                                  A QGIS plugin
  Weather Info
                               -------------------
@@ -27,17 +27,17 @@ from qgis.core import QgsProject, QgsRectangle
 # Initialize Qt resources from file resources.py
 from . import resources
 # Import the code for the dialog
-from .Weather_dialog import WeatherDialog
+from .QWeather_dialog import QWeatherDialog
 import os.path
 import uuid
 import platform
-# Weather
+# QWeather
 from urllib import parse, request
 from xml.dom import minidom
 import json
 import re
 
-class Weather:
+class QWeather:
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
@@ -57,7 +57,7 @@ class Weather:
         locale_path = os.path.join(
             self.plugin_dir,
             'i18n',
-            'Weather_{}.qm'.format(locale))
+            'QWeather_{}.qm'.format(locale))
 
         if os.path.exists(locale_path):
             self.translator = QTranslator()
@@ -69,10 +69,10 @@ class Weather:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&Weather')
+        self.menu = self.tr(u'&QWeather')
         # TODO: We are going to let the user set this up in a future iteration
-        self.toolbar = self.iface.addToolBar(u'Weather')
-        self.toolbar.setObjectName(u'Weather')
+        self.toolbar = self.iface.addToolBar(u'QWeather')
+        self.toolbar.setObjectName(u'QWeather')
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -87,7 +87,7 @@ class Weather:
         :rtype: QString
         """
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
-        return QCoreApplication.translate('Weather', message)
+        return QCoreApplication.translate('QWeather', message)
 
 
     def add_action(
@@ -168,21 +168,21 @@ class Weather:
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
-        icon_path = ':/plugins/Weather/weather.png'
+        icon_path = ':/plugins/QWeather/weather.png'
         self.add_action(
             icon_path,
             text=self.tr(u'Weather Info'),
             callback=self.run,
             parent=self.iface.mainWindow())
 
-        icon_path = ':/plugins/Weather/icons/reload.png'
+        icon_path = ':/plugins/QWeather/icons/reload.png'
         self.reloadButton = self.add_action(
             icon_path,
-            text=self.tr(u'Reload Weather layer'),
+            text=self.tr(u'Reload QWeather layer'),
             callback=self.reloadWeather,
             parent=self.iface.mainWindow())
 
-        self.dlg = WeatherDialog()
+        self.dlg = QWeatherDialog()
         self.dlg.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowCloseButtonHint)
 
         self.dlg.ok.clicked.connect(self.ok)
@@ -191,7 +191,7 @@ class Weather:
         self.dlg.checkBox.clicked.connect(self.customBox)
         self.csvFile = None
 
-        self.layerTemp = "Weather"
+        self.layerTemp = "QWeather"
         self.reload = False
         self.dlg.checkBox.setChecked(True)
         self.reloadButton.setEnabled(False)
@@ -208,7 +208,7 @@ class Weather:
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
             self.iface.removePluginMenu(
-            self.tr(u'&Weather'),
+            self.tr(u'&QWeather'),
             action)
             self.iface.removeToolBarIcon(action)
          # remove the toolbar
@@ -282,12 +282,12 @@ class Weather:
         if not self.dlg.checkBox.isChecked():
             self.csvFile =  self.plugin_dir + '\\database\\'+str(self.dlg.comboBox.currentText())+'.txt'
 
-        self.outWeatherGeoJson = self.plugin_dir + '\\Weather.geojson'
-        basename = os.path.basename(self.outWeatherGeoJson)
+        self.outQWeatherGeoJson = self.plugin_dir + '\\QWeather.geojson'
+        basename = os.path.basename(self.outQWeatherGeoJson)
         self.layerTemp = basename[:-8]
 
         try:
-            f = open(self.outWeatherGeoJson, "w")
+            f = open(self.outQWeatherGeoJson, "w")
             f.close()
         except:
             self.selectOutp()
@@ -305,7 +305,7 @@ class Weather:
         self.all_cities = [line.rstrip('\n').upper() for line in f]
         f.close()
 
-        f_Weather = False
+        f_QWeather = False
         if len(self.all_cities)> 400:
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Warning)
@@ -342,7 +342,7 @@ class Weather:
             self.style = 'weather_f'
 
         data = self.callQuery()
-        self.createJsonFiles(data, f_Weather)
+        self.createJsonFiles(data, f_QWeather)
 
         self.dlg.progressBar.setValue(100)
         ###########################################
@@ -352,15 +352,15 @@ class Weather:
         self.dlg.toolButtonImport.setEnabled(True)
         self.reloadButton.setEnabled(True)
 
-    def createJsonFiles(self, data, f_Weather):
+    def createJsonFiles(self, data, f_QWeather):
 
-        if f_Weather == False:
-            f_Weather = open(self.outWeatherGeoJson, "w")
-            f_Weather.write('''{ "type": "FeatureCollection", ''')
-            f_Weather.write(
+        if f_QWeather == False:
+            f_QWeather = open(self.outQWeatherGeoJson, "w")
+            f_QWeather.write('''{ "type": "FeatureCollection", ''')
+            f_QWeather.write(
                 '''"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } }, ''')
-            f_Weather.write('\n')
-            f_Weather.write('"features": [')
+            f_QWeather.write('\n')
+            f_QWeather.write('"features": [')
 
         for i in range(int(data['query']['count'])):
             self.dlg.progressBar.setValue((i)/100)
@@ -402,7 +402,7 @@ class Weather:
                     match = re.search(r'src="(.*?)"', IconTmp)
                     Icon = match[0][5:-1]
 
-                f_Weather.write(
+                f_QWeather.write(
                     '{ "type": "Feature", "properties": {  "City": ' + '"' + City + '"' + ', "Temp": '+ '"' + Temp + '"'
                     + ', "Direction": ' + '"' + Direction+self.unitDirection + '"'  + ', "Speed": ' + '"' + Speed+self.unitSpeed + '"'
                     + ', "Humidity": ' + '"' + Humidity+self.unitHumidity + '"'  + ', "Pressure": ' + '"' + Pressure+self.unitPressure + '"' + ', "Visibility": ' + '"' + Visibility+self.unitVisibility + '"'
@@ -411,35 +411,35 @@ class Weather:
                     + ', "Country": ' + '"' + Country.replace('ô','o').replace('´','') + '"'  + ', "Region": ' + '"' + Region.replace('´','') + '"'
                     + ', "Lon": ' + '"' + Lon + '"' + ', "Date": ' + '"' + Date + '"' + ', "Lat": ' + '"' + Lat + '"' +
                     ',}, "geometry": { "type": "Point",  "coordinates": ' + '[' + Lon + ',' + Lat + ']')
-                f_Weather.write('}\n }')
-                f_Weather.write(',\n')
+                f_QWeather.write('}\n }')
+                f_QWeather.write(',\n')
 
             except:
                 pass
 
-        f_Weather.write('\n]\n}\n')
-        f_Weather.close()
+        f_QWeather.write('\n]\n}\n')
+        f_QWeather.close()
 
         # print region_not_support
-        def addWeatherLayer():
-            self.Weather = self.iface.addVectorLayer(self.outWeatherGeoJson,
+        def addQWeatherLayer():
+            self.QWeather = self.iface.addVectorLayer(self.outQWeatherGeoJson,
                                                           self.layerTemp, "ogr")
-            self.Weather.loadNamedStyle(self.plugin_dir + "/icons/"+self.style+".qml")
+            self.QWeather.loadNamedStyle(self.plugin_dir + "/icons/"+self.style+".qml")
 
-            self.Weather.setReadOnly()
+            self.QWeather.setReadOnly()
 
         if len(QgsProject.instance().mapLayersByName(self.layerTemp)) == 0:
-            addWeatherLayer()
+            addQWeatherLayer()
         else:
             for x in self.iface.mapCanvas().layers():
                 if x.name() == self.layerTemp:
-                    self.Weather = x
-                    QgsProject.instance().removeMapLayer(self.Weather.id())
-                    addWeatherLayer()
+                    self.QWeather = x
+                    QgsProject.instance().removeMapLayer(self.QWeather.id())
+                    addQWeatherLayer()
         try:
-            self.iface.mapCanvas().setExtent(self.Weather.extent())
-            self.Weather.reload()
-            self.Weather.triggerRepaint()
+            self.iface.mapCanvas().setExtent(self.QWeather.extent())
+            self.QWeather.reload()
+            self.QWeather.triggerRepaint()
         except:
             pass
 

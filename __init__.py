@@ -29,5 +29,5 @@ def classFactory(iface):  # pylint: disable=invalid-name
     :type iface: QgsInterface
     """
     #
-    from .Weather import Weather
-    return Weather(iface)
+    from .QWeather import QWeather
+    return QWeather(iface)

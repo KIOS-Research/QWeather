@@ -7,7 +7,7 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=Weather
+name=QWeather
 qgisMinimumVersion=2.99
 qgisMaximumVersion=3.99
 description=Weather Information based on Yahoo API.
@@ -17,8 +17,8 @@ email=mariosmsk@gmail.com, george.a.christou@gmail.com
 
 about= This tool can be used to get weather using Yahoo Weather API. Get information about city, country, region, wind direction, wind speed, humidity, pressure, visibility, sunrise, sunset, lon, lat, temperature in celsius or fahreneit, date, and icon.
 				
-tracker=https://github.com/KIOS-Research/Weather/issues/
-repository=https://github.com/KIOS-Research/Weather/
+tracker=https://github.com/KIOS-Research/QWeather/issues/
+repository=https://github.com/KIOS-Research/QWeather/
 # End of mandatory metadata
 
 # Recommended items:
@@ -27,7 +27,7 @@ repository=https://github.com/KIOS-Research/Weather/
 # Tags are comma separated with spaces allowed
 tags=weather, temperature, wind direction, wind speed, humidity, pressure, visibility, sunrise, sunset, yahoo api
 
-homepage=https://github.com/KIOS-Research/Weather/
+homepage=https://github.com/KIOS-Research/QWeather/
 category=Plugins
 icon=weather.png
 # experimental flag

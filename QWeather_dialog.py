@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- ImportPhotos
+ QWeather
                                  A QGIS plugin
- Import photos jpegs
+ Weather Info
                               -------------------
-        begin                : 2017-10-17
+        begin                : 2018-06-07
         git sha              : $Format:%H$
-        copyright            : (C) 2017 by KIOS Research Center
+        copyright            : (C) 2018 by KIOS Research Center
         email                : mariosmsk@gmail.com
  ***************************************************************************/
 
@@ -30,11 +30,11 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'weather.ui'))
 
 
-class WeatherDialog(QDialog, FORM_CLASS):
+class QWeatherDialog(QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         # """Constructor."""
         QDialog.__init__(self, None, QtCore.Qt.WindowStaysOnTopHint)
-        super(WeatherDialog, self).__init__(parent)
+        super(QWeatherDialog, self).__init__(parent)
         # Set up the user interface from Designer.
         # After setupUI you can access any designer object by doing
         # self.<objectname>, and you can use autoconnect slots - see
