@@ -229,7 +229,7 @@ class QWeather:
         self.dlg.closebutton.setEnabled(True)
         self.dlg.toolButtonImport.setEnabled(True)
         if self.csvFile==None:
-            self.csvFile = self.plugin_dir + '/database/World.txt'
+            self.csvFile = self.plugin_dir + '/World Capitals.txt'
         self.dlg.imp.setText(self.csvFile)
 
         self.dlg.progressBar.setValue(0)
@@ -238,11 +238,7 @@ class QWeather:
         self.customBox()
 
         self.dlg.comboBox.clear()
-        db_list = ['World']
-        for root, dirnames, filenames in os.walk(self.plugin_dir+'\\database'):
-            for filename in filenames:
-                if filename.endswith(('.txt')):
-                    db_list.append(os.path.basename(filename)[0:-4])
+        db_list = ['World Capitals','Afghanistan','Aland','Albania','Algeria','American Samoa','Andorra','Angola','Antarctica','Antigua and Barbuda','Argentina','Armenia','Aruba','Australia','Austria','Azerbaijan','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bermuda','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','Brunei','Bulgaria','Burkina Faso','Burundi','Cambodia','Cameroon','Canada','Cape Verde','Cayman Islands','Central African Republic','Chad','Chile','China','Colombia','Comoros','Congo (Brazzaville)','Congo (Kinshasa)','Cook Islands','Costa Rica','Croatia','Cuba','Curacao','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Dominican Republic','East Timor','Ecuador','Egypt','El Salvador','Equatorial Guinea','Eritrea','Estonia','Ethiopia','Falkland Islands','Faroe Islands','Federated States of Micronesia','Fiji','Finland','France','French Polynesia','Gabon','Georgia','Germany','Ghana','Gibraltar','Greece','Greenland','Grenada','Guam','Guatemala','Guinea','Guinea Bissau','Guyana','Haiti','Honduras','Hong Kong S.A.R.','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Isle of Man','Israel','Italy','Ivory Coast','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Kiribati','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Liechtenstein','Lithuania','Luxembourg','Macau S.A.R','Macedonia','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Marshall Islands','Mauritania','Mauritius','Mexico','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar','Namibia','Nepal','Netherlands','New Caledonia','New Zealand','Nicaragua','Niger','Nigeria','North Korea','Northern Mariana Islands','Norway','Oman','Pakistan','Palau','Palestine','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Poland','Portugal','Puerto Rico','Qatar','Romania','Russia','Rwanda','Saint Kitts and Nevis','Saint Lucia','Saint Vincent and the Grenadines','Samoa','San Marino','Sao Tome and Principe','Saudi Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Slovakia','Slovenia','Solomon Islands','Somalia','Somaliland','South Africa','South Georgia and the Islands','South Korea','South Sudan','Spain','Sri Lanka','Sudan','Suriname','Svalbard and Jan Mayen Islands','Swaziland','Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','The Bahamas','The Gambia','Togo','Tonga','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Turks and Caicos Islands','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States Virgin Islands','United States of America','Uruguay','Uzbekistan','Vanuatu','Vatican (Holy Sea)','Venezuela','Vietnam','Western Sahara','Yemen','Zambia','Zimbabwe']
 
         self.dlg.comboBox.addItems(db_list)
         self.dlg.show()
@@ -279,8 +275,17 @@ class QWeather:
         else:
             self.reload = False
 
+        self.all_cities = []
         if not self.dlg.checkBox.isChecked():
-            self.csvFile =  self.plugin_dir + '\\database\\'+str(self.dlg.comboBox.currentText())+'.txt'
+            f_all = open(self.plugin_dir + '\\Countries.txt', 'r')
+            for line in f_all:
+                if (line.rstrip('\n').split()[-1]) == self.dlg.comboBox.currentText():
+                    self.all_cities.append(line.rstrip('\n'))
+            print(self.all_cities)
+        else:
+            f = open(self.csvFile, 'r')
+            self.all_cities = [line.rstrip('\n').upper() for line in f]
+            f.close()
 
         self.outQWeatherGeoJson = self.plugin_dir + '\\QWeather.geojson'
         basename = os.path.basename(self.outQWeatherGeoJson)
@@ -301,9 +306,6 @@ class QWeather:
         if self.iface.actionMapTips().isChecked() == False:
             self.iface.actionMapTips().trigger()
 
-        f = open(self.csvFile, 'r')
-        self.all_cities = [line.rstrip('\n').upper() for line in f]
-        f.close()
 
         f_QWeather = False
         if len(self.all_cities)> 400:
