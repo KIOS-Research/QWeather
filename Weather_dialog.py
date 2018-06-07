@@ -30,11 +30,11 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'weather.ui'))
 
 
-class WeatherInfoDialog(QDialog, FORM_CLASS):
+class WeatherDialog(QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         # """Constructor."""
         QDialog.__init__(self, None, QtCore.Qt.WindowStaysOnTopHint)
-        super(WeatherInfoDialog, self).__init__(parent)
+        super(WeatherDialog, self).__init__(parent)
         # Set up the user interface from Designer.
         # After setupUI you can access any designer object by doing
         # self.<objectname>, and you can use autoconnect slots - see

@@ -1,0 +1,16 @@
+{ "type": "FeatureCollection", "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } }, 
+"features": [{ "type": "Feature", "properties": {  "City": "Larnaca", "Temp": "91", "Direction": "180 degrees", "Speed": "18 mph", "Humidity": "39 %", "Pressure": "1006.0 psi", "Visibility": "16.1 mi", "Sunrise": "5:31 am", "Sunset": "7:58 pm", "Unit": "F", "Icon": "http://l.yimg.com/a/i/us/we/52/32.gif", "Country": "Cyprus", "Region": " Larnaca District", "Lon": "33.63821", "Date": "Thu, 07 Jun 2018 02:00 PM EEST", "Lat": "34.920021",}, "geometry": { "type": "Point",  "coordinates": [33.63821,34.920021]}
+ },
+{ "type": "Feature", "properties": {  "City": "Paphos District", "Temp": "85", "Direction": "330 degrees", "Speed": "11 mph", "Humidity": "62 %", "Pressure": "985.0 psi", "Visibility": "16.1 mi", "Sunrise": "5:34 am", "Sunset": "8:1 pm", "Unit": "F", "Icon": "http://l.yimg.com/a/i/us/we/52/32.gif", "Country": "Cyprus", "Region": " CY", "Lon": "32.529942", "Date": "Thu, 07 Jun 2018 02:00 PM EEST", "Lat": "34.916309",}, "geometry": { "type": "Point",  "coordinates": [32.529942,34.916309]}
+ },
+{ "type": "Feature", "properties": {  "City": "Limassol District", "Temp": "101", "Direction": "15 degrees", "Speed": "14 mph", "Humidity": "12 %", "Pressure": "964.0 psi", "Visibility": "16.1 mi", "Sunrise": "5:33 am", "Sunset": "7:59 pm", "Unit": "F", "Icon": "http://l.yimg.com/a/i/us/we/52/32.gif", "Country": "Cyprus", "Region": " CY", "Lon": "32.958721", "Date": "Thu, 07 Jun 2018 02:00 PM EEST", "Lat": "34.76228",}, "geometry": { "type": "Point",  "coordinates": [32.958721,34.76228]}
+ },
+{ "type": "Feature", "properties": {  "City": "Nicosia", "Temp": "103", "Direction": "10 degrees", "Speed": "11 mph", "Humidity": "11 %", "Pressure": "992.0 psi", "Visibility": "16.1 mi", "Sunrise": "5:32 am", "Sunset": "7:59 pm", "Unit": "F", "Icon": "http://l.yimg.com/a/i/us/we/52/32.gif", "Country": "Cyprus", "Region": " Nicosia District", "Lon": "33.36898", "Date": "Thu, 07 Jun 2018 02:00 PM EEST", "Lat": "35.170952",}, "geometry": { "type": "Point",  "coordinates": [33.36898,35.170952]}
+ },
+{ "type": "Feature", "properties": {  "City": "Kyrenia", "Temp": "93", "Direction": "0 degrees", "Speed": "7 mph", "Humidity": "38 %", "Pressure": "1000.0 psi", "Visibility": "16.1 mi", "Sunrise": "5:32 am", "Sunset": "8:0 pm", "Unit": "F", "Icon": "http://l.yimg.com/a/i/us/we/52/32.gif", "Country": "Cyprus", "Region": " Kyrenia District", "Lon": "33.332951", "Date": "Thu, 07 Jun 2018 02:00 PM EEST", "Lat": "35.325981",}, "geometry": { "type": "Point",  "coordinates": [33.332951,35.325981]}
+ },
+{ "type": "Feature", "properties": {  "City": "Famagusta", "Temp": "89", "Direction": "65 degrees", "Speed": "14 mph", "Humidity": "53 %", "Pressure": "1012.0 psi", "Visibility": "16.1 mi", "Sunrise": "5:30 am", "Sunset": "7:57 pm", "Unit": "F", "Icon": "http://l.yimg.com/a/i/us/we/52/32.gif", "Country": "Cyprus", "Region": " Famagusta District", "Lon": "33.955399", "Date": "Thu, 07 Jun 2018 02:00 PM EEST", "Lat": "35.113689",}, "geometry": { "type": "Point",  "coordinates": [33.955399,35.113689]}
+ },
+
+]
+}

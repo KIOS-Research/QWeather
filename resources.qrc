@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/plugins/WeatherInfo" >
+    <qresource prefix="/plugins/Weather" >
         <file>weather.png</file>
         <file>icons/reload.png</file>
     </qresource>

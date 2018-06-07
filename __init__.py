@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- WeatherInfo
+ Weather
                                  A QGIS plugin
  Weather Info
                               -------------------
-        begin                : 2017-10-17
+        begin                : 2018-06-07
         git sha              : $Format:%H$
-        copyright            : (C) 2017 by KIOS Research Center
+        copyright            : (C) 2018 by KIOS Research Center
         email                : mariosmsk@gmail.com
  ***************************************************************************/
 
@@ -29,5 +29,5 @@ def classFactory(iface):  # pylint: disable=invalid-name
     :type iface: QgsInterface
     """
     #
-    from .WeatherInfo import WeatherInfo
-    return WeatherInfo(iface)
+    from .Weather import Weather
+    return Weather(iface)
