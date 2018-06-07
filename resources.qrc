@@ -2,5 +2,228 @@
     <qresource prefix="/plugins/QWeather" >
         <file>weather.png</file>
         <file>icons/reload.png</file>
+		<file>database/World.txt</file>
+		<file>database/Afghanistan.txt</file>
+		<file>database/Aland.txt</file>
+		<file>database/Albania.txt</file>
+		<file>database/Algeria.txt</file>
+		<file>database/American Samoa.txt</file>
+		<file>database/Andorra.txt</file>
+		<file>database/Angola.txt</file>
+		<file>database/Antarctica.txt</file>
+		<file>database/Antigua and Barbuda.txt</file>
+		<file>database/Argentina.txt</file>
+		<file>database/Armenia.txt</file>
+		<file>database/Aruba.txt</file>
+		<file>database/Australia.txt</file>
+		<file>database/Austria.txt</file>
+		<file>database/Azerbaijan.txt</file>
+		<file>database/Bahrain.txt</file>
+		<file>database/Bangladesh.txt</file>
+		<file>database/Barbados.txt</file>
+		<file>database/Belarus.txt</file>
+		<file>database/Belgium.txt</file>
+		<file>database/Belize.txt</file>
+		<file>database/Benin.txt</file>
+		<file>database/Bermuda.txt</file>
+		<file>database/Bhutan.txt</file>
+		<file>database/Bolivia.txt</file>
+		<file>database/Bosnia and Herzegovina.txt</file>
+		<file>database/Botswana.txt</file>
+		<file>database/Brazil.txt</file>
+		<file>database/Brunei.txt</file>
+		<file>database/Bulgaria.txt</file>
+		<file>database/Burkina Faso.txt</file>
+		<file>database/Burundi.txt</file>
+		<file>database/Cambodia.txt</file>
+		<file>database/Cameroon.txt</file>
+		<file>database/Canada.txt</file>
+		<file>database/Cape Verde.txt</file>
+		<file>database/Cayman Islands.txt</file>
+		<file>database/Central African Republic.txt</file>
+		<file>database/Chad.txt</file>
+		<file>database/Chile.txt</file>
+		<file>database/China.txt</file>
+		<file>database/Colombia.txt</file>
+		<file>database/Comoros.txt</file>
+		<file>database/Congo (Brazzaville).txt</file>
+		<file>database/Congo (Kinshasa).txt</file>
+		<file>database/Cook Islands.txt</file>
+		<file>database/Costa Rica.txt</file>
+		<file>database/Croatia.txt</file>
+		<file>database/Cuba.txt</file>
+		<file>database/Curacao.txt</file>
+		<file>database/Cyprus.txt</file>
+		<file>database/Czech Republic.txt</file>
+		<file>database/Denmark.txt</file>
+		<file>database/Djibouti.txt</file>
+		<file>database/Dominica.txt</file>
+		<file>database/Dominican Republic.txt</file>
+		<file>database/East Timor.txt</file>
+		<file>database/Ecuador.txt</file>
+		<file>database/Egypt.txt</file>
+		<file>database/El Salvador.txt</file>
+		<file>database/Equatorial Guinea.txt</file>
+		<file>database/Eritrea.txt</file>
+		<file>database/Estonia.txt</file>
+		<file>database/Ethiopia.txt</file>
+		<file>database/Falkland Islands.txt</file>
+		<file>database/Faroe Islands.txt</file>
+		<file>database/Federated States of Micronesia.txt</file>
+		<file>database/Fiji.txt</file>
+		<file>database/Finland.txt</file>
+		<file>database/France.txt</file>
+		<file>database/French Polynesia.txt</file>
+		<file>database/Gabon.txt</file>
+		<file>database/Georgia.txt</file>
+		<file>database/Germany.txt</file>
+		<file>database/Ghana.txt</file>
+		<file>database/Gibraltar.txt</file>
+		<file>database/Greece.txt</file>
+		<file>database/Greenland.txt</file>
+		<file>database/Grenada.txt</file>
+		<file>database/Guam.txt</file>
+		<file>database/Guatemala.txt</file>
+		<file>database/Guinea.txt</file>
+		<file>database/Guinea Bissau.txt</file>
+		<file>database/Guyana.txt</file>
+		<file>database/Haiti.txt</file>
+		<file>database/Honduras.txt</file>
+		<file>database/Hong Kong S.A.R..txt</file>
+		<file>database/Hungary.txt</file>
+		<file>database/Iceland.txt</file>
+		<file>database/India.txt</file>
+		<file>database/Indonesia.txt</file>
+		<file>database/Iran.txt</file>
+		<file>database/Iraq.txt</file>
+		<file>database/Ireland.txt</file>
+		<file>database/Isle of Man.txt</file>
+		<file>database/Israel.txt</file>
+		<file>database/Italy.txt</file>
+		<file>database/Ivory Coast.txt</file>
+		<file>database/Jamaica.txt</file>
+		<file>database/Japan.txt</file>
+		<file>database/Jordan.txt</file>
+		<file>database/Kazakhstan.txt</file>
+		<file>database/Kenya.txt</file>
+		<file>database/Kiribati.txt</file>
+		<file>database/Kosovo.txt</file>
+		<file>database/Kuwait.txt</file>
+		<file>database/Kyrgyzstan.txt</file>
+		<file>database/Laos.txt</file>
+		<file>database/Latvia.txt</file>
+		<file>database/Lebanon.txt</file>
+		<file>database/Lesotho.txt</file>
+		<file>database/Liberia.txt</file>
+		<file>database/Libya.txt</file>
+		<file>database/Liechtenstein.txt</file>
+		<file>database/Lithuania.txt</file>
+		<file>database/Luxembourg.txt</file>
+		<file>database/Macau S.A.R.txt</file>
+		<file>database/Macedonia.txt</file>
+		<file>database/Madagascar.txt</file>
+		<file>database/Malawi.txt</file>
+		<file>database/Malaysia.txt</file>
+		<file>database/Maldives.txt</file>
+		<file>database/Mali.txt</file>
+		<file>database/Malta.txt</file>
+		<file>database/Marshall Islands.txt</file>
+		<file>database/Mauritania.txt</file>
+		<file>database/Mauritius.txt</file>
+		<file>database/Mexico.txt</file>
+		<file>database/Moldova.txt</file>
+		<file>database/Monaco.txt</file>
+		<file>database/Mongolia.txt</file>
+		<file>database/Montenegro.txt</file>
+		<file>database/Morocco.txt</file>
+		<file>database/Mozambique.txt</file>
+		<file>database/Myanmar.txt</file>
+		<file>database/Namibia.txt</file>
+		<file>database/Nepal.txt</file>
+		<file>database/Netherlands.txt</file>
+		<file>database/New Caledonia.txt</file>
+		<file>database/New Zealand.txt</file>
+		<file>database/Nicaragua.txt</file>
+		<file>database/Niger.txt</file>
+		<file>database/Nigeria.txt</file>
+		<file>database/North Korea.txt</file>
+		<file>database/Northern Mariana Islands.txt</file>
+		<file>database/Norway.txt</file>
+		<file>database/Oman.txt</file>
+		<file>database/Pakistan.txt</file>
+		<file>database/Palau.txt</file>
+		<file>database/Palestine.txt</file>
+		<file>database/Panama.txt</file>
+		<file>database/Papua New Guinea.txt</file>
+		<file>database/Paraguay.txt</file>
+		<file>database/Peru.txt</file>
+		<file>database/Philippines.txt</file>
+		<file>database/Poland.txt</file>
+		<file>database/Portugal.txt</file>
+		<file>database/Puerto Rico.txt</file>
+		<file>database/Qatar.txt</file>
+		<file>database/Romania.txt</file>
+		<file>database/Russia.txt</file>
+		<file>database/Rwanda.txt</file>
+		<file>database/Saint Kitts and Nevis.txt</file>
+		<file>database/Saint Lucia.txt</file>
+		<file>database/Saint Vincent and the Grenadines.txt</file>
+		<file>database/Samoa.txt</file>
+		<file>database/San Marino.txt</file>
+		<file>database/Sao Tome and Principe.txt</file>
+		<file>database/Saudi Arabia.txt</file>
+		<file>database/Senegal.txt</file>
+		<file>database/Serbia.txt</file>
+		<file>database/Seychelles.txt</file>
+		<file>database/Sierra Leone.txt</file>
+		<file>database/Singapore.txt</file>
+		<file>database/Slovakia.txt</file>
+		<file>database/Slovenia.txt</file>
+		<file>database/Solomon Islands.txt</file>
+		<file>database/Somalia.txt</file>
+		<file>database/Somaliland.txt</file>
+		<file>database/South Africa.txt</file>
+		<file>database/South Georgia and the Islands.txt</file>
+		<file>database/South Korea.txt</file>
+		<file>database/South Sudan.txt</file>
+		<file>database/Spain.txt</file>
+		<file>database/Sri Lanka.txt</file>
+		<file>database/Sudan.txt</file>
+		<file>database/Suriname.txt</file>
+		<file>database/Svalbard and Jan Mayen Islands.txt</file>
+		<file>database/Swaziland.txt</file>
+		<file>database/Sweden.txt</file>
+		<file>database/Switzerland.txt</file>
+		<file>database/Syria.txt</file>
+		<file>database/Taiwan.txt</file>
+		<file>database/Tajikistan.txt</file>
+		<file>database/Tanzania.txt</file>
+		<file>database/Thailand.txt</file>
+		<file>database/The Bahamas.txt</file>
+		<file>database/The Gambia.txt</file>
+		<file>database/Togo.txt</file>
+		<file>database/Tonga.txt</file>
+		<file>database/Trinidad and Tobago.txt</file>
+		<file>database/Tunisia.txt</file>
+		<file>database/Turkey.txt</file>
+		<file>database/Turkmenistan.txt</file>
+		<file>database/Turks and Caicos Islands.txt</file>
+		<file>database/Tuvalu.txt</file>
+		<file>database/Uganda.txt</file>
+		<file>database/Ukraine.txt</file>
+		<file>database/United Arab Emirates.txt</file>
+		<file>database/United Kingdom.txt</file>
+		<file>database/United States Virgin Islands.txt</file>
+		<file>database/United States of America.txt</file>
+		<file>database/Uruguay.txt</file>
+		<file>database/Uzbekistan.txt</file>
+		<file>database/Vanuatu.txt</file>
+		<file>database/Vatican (Holy Sea).txt</file>
+		<file>database/Venezuela.txt</file>
+		<file>database/Vietnam.txt</file>
+		<file>database/Western Sahara.txt</file>
+		<file>database/Yemen.txt</file>
+		<file>database/Zambia.txt</file>
+		<file>database/Zimbabwe.txt</file>
     </qresource>
 </RCC>
