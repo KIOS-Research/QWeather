@@ -61,7 +61,7 @@
     <string>Close</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -74,7 +74,7 @@
     <item>
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>Select txt file with location names:</string>
+       <string>Select csv file with location names:</string>
       </property>
      </widget>
     </item>
@@ -90,7 +90,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -112,7 +112,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -138,16 +138,12 @@
     </item>
    </layout>
   </widget>
+  <zorder>layoutWidget</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>layoutWidget</zorder>
   <zorder>closebutton</zorder>
-  <zorder>label</zorder>
-  <zorder>imp</zorder>
-  <zorder>toolButtonImport</zorder>
   <zorder>progressBar</zorder>
   <zorder>ok</zorder>
-  <zorder>Celsius</zorder>
-  <zorder>Fahreneit</zorder>
-  <zorder>comboBox</zorder>
-  <zorder>checkBox</zorder>
  </widget>
  <resources/>
  <connections/>

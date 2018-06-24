@@ -190,7 +190,7 @@ class QWeather:
         self.dlg.toolButtonImport.clicked.connect(self.toolButtonImport)
         self.dlg.checkBox.clicked.connect(self.customBox)
         self.csvFile = None
-
+        self.current = 'World Capitals'
         self.layerTemp = "QWeather"
         self.reload = False
         self.dlg.checkBox.setChecked(True)
@@ -200,7 +200,7 @@ class QWeather:
         #if len(QgsProject.instance().mapLayersByName(self.layerTemp)) != 0:
         self.reload = True
         if self.csvFile==None:
-            self.csvFile = self.plugin_dir + '/database/World.txt'
+            self.csvFile = self.plugin_dir + '/World Capitals.csv'
         self.dlg.imp.setText(self.csvFile)
         self.ok()
 
@@ -229,7 +229,7 @@ class QWeather:
         self.dlg.closebutton.setEnabled(True)
         self.dlg.toolButtonImport.setEnabled(True)
         if self.csvFile==None:
-            self.csvFile = self.plugin_dir + '/World Capitals.txt'
+            self.csvFile = self.plugin_dir + '/World Capitals.csv'
         self.dlg.imp.setText(self.csvFile)
 
         self.dlg.progressBar.setValue(0)
@@ -241,6 +241,7 @@ class QWeather:
         db_list = ['World Capitals','Afghanistan','Aland','Albania','Algeria','American Samoa','Andorra','Angola','Antarctica','Antigua and Barbuda','Argentina','Armenia','Aruba','Australia','Austria','Azerbaijan','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bermuda','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','Brunei','Bulgaria','Burkina Faso','Burundi','Cambodia','Cameroon','Canada','Cape Verde','Cayman Islands','Central African Republic','Chad','Chile','China','Colombia','Comoros','Congo (Brazzaville)','Congo (Kinshasa)','Cook Islands','Costa Rica','Croatia','Cuba','Curacao','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Dominican Republic','East Timor','Ecuador','Egypt','El Salvador','Equatorial Guinea','Eritrea','Estonia','Ethiopia','Falkland Islands','Faroe Islands','Federated States of Micronesia','Fiji','Finland','France','French Polynesia','Gabon','Georgia','Germany','Ghana','Gibraltar','Greece','Greenland','Grenada','Guam','Guatemala','Guinea','Guinea Bissau','Guyana','Haiti','Honduras','Hong Kong S.A.R.','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Isle of Man','Israel','Italy','Ivory Coast','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Kiribati','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Liechtenstein','Lithuania','Luxembourg','Macau S.A.R','Macedonia','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Marshall Islands','Mauritania','Mauritius','Mexico','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar','Namibia','Nepal','Netherlands','New Caledonia','New Zealand','Nicaragua','Niger','Nigeria','North Korea','Northern Mariana Islands','Norway','Oman','Pakistan','Palau','Palestine','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Poland','Portugal','Puerto Rico','Qatar','Romania','Russia','Rwanda','Saint Kitts and Nevis','Saint Lucia','Saint Vincent and the Grenadines','Samoa','San Marino','Sao Tome and Principe','Saudi Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Slovakia','Slovenia','Solomon Islands','Somalia','Somaliland','South Africa','South Georgia and the Islands','South Korea','South Sudan','Spain','Sri Lanka','Sudan','Suriname','Svalbard and Jan Mayen Islands','Swaziland','Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','The Bahamas','The Gambia','Togo','Tonga','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Turks and Caicos Islands','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States Virgin Islands','United States of America','Uruguay','Uzbekistan','Vanuatu','Vatican (Holy Sea)','Venezuela','Vietnam','Western Sahara','Yemen','Zambia','Zimbabwe']
 
         self.dlg.comboBox.addItems(db_list)
+        self.dlg.comboBox.setCurrentText(self.current)
         self.dlg.show()
 
     def close(self):
@@ -249,8 +250,10 @@ class QWeather:
     def toolButtonImport(self):
         self.csvFile  = QFileDialog.getOpenFileName(None, "Choose the file",
                                                             os.path.join(os.path.join(os.path.expanduser('~')),
-                                                            'Desktop'),"(*.txt)")
-        if self.csvFile == "":
+                                                            'Desktop'),"(*.csv)")
+        if self.csvFile[0] == "":
+            self.csvFile = self.plugin_dir + '/World Capitals.csv'
+            self.dlg.imp.setText(self.csvFile)
             return
         self.csvFile = self.csvFile[0]
         self.dlg.imp.setText(self.csvFile)
@@ -259,7 +262,7 @@ class QWeather:
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Warning)
         msgBox.setWindowTitle('Warning')
-        msgBox.setText('Please define a txt file with locations.')
+        msgBox.setText('Please define a csv file with locations.')
         msgBox.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowCloseButtonHint)
         msgBox.exec_()
         return True
@@ -275,13 +278,22 @@ class QWeather:
         else:
             self.reload = False
 
-        self.all_cities = []
+        self.csvFile = self.dlg.imp.text()
+        status = False
         if not self.dlg.checkBox.isChecked():
-            f_all = open(self.plugin_dir + '\\Countries.txt', 'r')
+            self.current = self.dlg.comboBox.currentText()
+            status = self.current.upper() == 'WORLD CAPITALS'
+            if status:
+                self.csvFile = self.plugin_dir + '/World Capitals.csv'
+
+        if not self.dlg.checkBox.isChecked() and not status:
+            self.csvFile = self.plugin_dir + '\\Countries.csv'
+            f_all = open(self.csvFile, 'r')
+            self.all_cities=[]
             for line in f_all:
-                if (line.rstrip('\n').split()[-1]) == self.dlg.comboBox.currentText():
-                    self.all_cities.append(line.rstrip('\n'))
-            print(self.all_cities)
+                mm = line.rstrip(',').upper()
+                if self.current.upper() in mm:
+                    self.all_cities.append(mm[:-1])
         else:
             f = open(self.csvFile, 'r')
             self.all_cities = [line.rstrip('\n').upper() for line in f]
@@ -306,13 +318,11 @@ class QWeather:
         if self.iface.actionMapTips().isChecked() == False:
             self.iface.actionMapTips().trigger()
 
-
-        f_QWeather = False
-        if len(self.all_cities)> 400:
+        if len(self.all_cities)> 750:
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Warning)
             msgBox.setWindowTitle('Warning')
-            msgBox.setText('Maximum locations must be below from 400.')
+            msgBox.setText('Maximum locations must be below from 750.')
             msgBox.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowCloseButtonHint)
             msgBox.exec_()
             self.dlg.progressBar.setValue(100)
@@ -343,29 +353,46 @@ class QWeather:
             self.unitPressure = " psi"
             self.style = 'weather_f'
 
-        data = self.callQuery()
-        self.createJsonFiles(data, f_QWeather)
+        if len(self.all_cities) > 350:
+            self.tmp_cities = self.all_cities
+            self.all_cities = self.tmp_cities[:350]
+            data = self.callQuery()
+            self.close_file = False
+            self.createJsonFiles(data, False)
+            self.all_cities = self.tmp_cities[351:]
+            data = self.callQuery()
+            self.close_file = True
+            self.createJsonFiles(data, True)
+        else:
+            self.close_file = True
+            data = self.callQuery()
+            self.createJsonFiles(data, False)
 
         self.dlg.progressBar.setValue(100)
         ###########################################
 
         self.dlg.ok.setEnabled(True)
         self.dlg.closebutton.setEnabled(True)
-        self.dlg.toolButtonImport.setEnabled(True)
+        if not self.dlg.checkBox.isChecked():
+            self.dlg.toolButtonImport.setEnabled(False)
+        else:
+            self.dlg.toolButtonImport.setEnabled(True)
+
         self.reloadButton.setEnabled(True)
 
     def createJsonFiles(self, data, f_QWeather):
 
         if f_QWeather == False:
-            f_QWeather = open(self.outQWeatherGeoJson, "w")
-            f_QWeather.write('''{ "type": "FeatureCollection", ''')
-            f_QWeather.write(
+            self.dlg.progressBar.setValue(10)
+            self.f_fileWeather = open(self.outQWeatherGeoJson, "w")
+            self.f_fileWeather.write('''{ "type": "FeatureCollection", ''')
+            self.f_fileWeather.write(
                 '''"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } }, ''')
-            f_QWeather.write('\n')
-            f_QWeather.write('"features": [')
+            self.f_fileWeather.write('\n')
+            self.f_fileWeather.write('"features": [')
 
         for i in range(int(data['query']['count'])):
-            self.dlg.progressBar.setValue((i)/100)
+            self.dlg.progressBar.setValue(40)
             try:
                 try:
                     City = data['query']['results']['channel'][i]['location']['city']
@@ -404,46 +431,47 @@ class QWeather:
                     match = re.search(r'src="(.*?)"', IconTmp)
                     Icon = match[0][5:-1]
 
-                f_QWeather.write(
-                    '{ "type": "Feature", "properties": {  "City": ' + '"' + City + '"' + ', "Temp": '+ '"' + Temp + '"'
-                    + ', "Direction": ' + '"' + Direction+self.unitDirection + '"'  + ', "Speed": ' + '"' + Speed+self.unitSpeed + '"'
-                    + ', "Humidity": ' + '"' + Humidity+self.unitHumidity + '"'  + ', "Pressure": ' + '"' + Pressure+self.unitPressure + '"' + ', "Visibility": ' + '"' + Visibility+self.unitVisibility + '"'
-                    + ', "Sunrise": ' + '"' + Sunrise + '"'  + ', "Sunset": ' + '"' + Sunset + '"'
-                    + ', "Unit": ' + '"' + self.unit + '"'  + ', "Icon": ' + '"' + Icon + '"'
-                    + ', "Country": ' + '"' + Country.replace('ô','o').replace('´','') + '"'  + ', "Region": ' + '"' + Region.replace('´','') + '"'
-                    + ', "Lon": ' + '"' + Lon + '"' + ', "Date": ' + '"' + Date + '"' + ', "Lat": ' + '"' + Lat + '"' +
-                    ',}, "geometry": { "type": "Point",  "coordinates": ' + '[' + Lon + ',' + Lat + ']')
-                f_QWeather.write('}\n }')
-                f_QWeather.write(',\n')
+                self.f_fileWeather.write(
+                '{ "type": "Feature", "properties": {  "City": ' + '"' + City + '"' + ', "Temp": '+ '"' + Temp + '"'
+                + ', "Direction": ' + '"' + Direction+self.unitDirection + '"'  + ', "Speed": ' + '"' + Speed+self.unitSpeed + '"'
+                + ', "Humidity": ' + '"' + Humidity+self.unitHumidity + '"'  + ', "Pressure": ' + '"' + Pressure+self.unitPressure + '"' + ', "Visibility": ' + '"' + Visibility+self.unitVisibility + '"'
+                + ', "Sunrise": ' + '"' + Sunrise + '"'  + ', "Sunset": ' + '"' + Sunset + '"'
+                + ', "Unit": ' + '"' + self.unit + '"'  + ', "Icon": ' + '"' + Icon + '"'
+                + ', "Country": ' + '"' + Country.replace('ô','o').replace('´','') + '"'  + ', "Region": ' + '"' + Region.replace('´','') + '"'
+                + ', "Lon": ' + '"' + Lon + '"' + ', "Date": ' + '"' + Date + '"' + ', "Lat": ' + '"' + Lat + '"' +
+                ',}, "geometry": { "type": "Point",  "coordinates": ' + '[' + Lon + ',' + Lat + ']')
+                self.f_fileWeather.write('}\n }')
+                self.f_fileWeather.write(',\n')
 
             except:
                 pass
 
-        f_QWeather.write('\n]\n}\n')
-        f_QWeather.close()
+        if self.close_file:
+            self.f_fileWeather.write('\n]\n}\n')
+            self.f_fileWeather.close()
 
-        # print region_not_support
-        def addQWeatherLayer():
-            self.QWeather = self.iface.addVectorLayer(self.outQWeatherGeoJson,
-                                                          self.layerTemp, "ogr")
-            self.QWeather.loadNamedStyle(self.plugin_dir + "/icons/"+self.style+".qml")
+            # print region_not_support
+            def addQWeatherLayer():
+                self.QWeather = self.iface.addVectorLayer(self.outQWeatherGeoJson,
+                                                              self.layerTemp, "ogr")
+                self.QWeather.loadNamedStyle(self.plugin_dir + "/icons/"+self.style+".qml")
 
-            self.QWeather.setReadOnly()
+                self.QWeather.setReadOnly()
 
-        if len(QgsProject.instance().mapLayersByName(self.layerTemp)) == 0:
-            addQWeatherLayer()
-        else:
-            for x in self.iface.mapCanvas().layers():
-                if x.name() == self.layerTemp:
-                    self.QWeather = x
-                    QgsProject.instance().removeMapLayer(self.QWeather.id())
-                    addQWeatherLayer()
-        try:
-            self.iface.mapCanvas().setExtent(self.QWeather.extent())
-            self.QWeather.reload()
-            self.QWeather.triggerRepaint()
-        except:
-            pass
+            if len(QgsProject.instance().mapLayersByName(self.layerTemp)) == 0:
+                addQWeatherLayer()
+            else:
+                for x in self.iface.mapCanvas().layers():
+                    if x.name() == self.layerTemp:
+                        self.QWeather = x
+                        QgsProject.instance().removeMapLayer(self.QWeather.id())
+                        addQWeatherLayer()
+            try:
+                self.iface.mapCanvas().setExtent(self.QWeather.extent())
+                self.QWeather.reload()
+                self.QWeather.triggerRepaint()
+            except:
+                pass
 
     def callQuery(self):
         if len(self.all_cities) > 1:
@@ -451,8 +479,6 @@ class QWeather:
         else:
             yql_query = 'select *  from weather.forecast  where woeid in (     select woeid      from geo.places(1)      where text = "' + str(self.all_cities[0]) + '")' + ' and u="' + self.unit + '"'
 
-        #yql_query = 'select * from Weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE  in (' + str(
-        #    all_cities)[1:-1] + '))'+' and u="'+ self.unit + '"'
         yql_url = "https://query.yahooapis.com/v1/public/yql?" + parse.urlencode({'q': yql_query}) + "&format=json"
         result = request.urlopen(yql_url).read()
         data = json.loads(result)
