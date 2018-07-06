@@ -11,7 +11,7 @@ name=QWeather
 qgisMinimumVersion=2.99
 qgisMaximumVersion=3.99
 description=Weather Information based on Yahoo API.
-version=0.2
+version=3.0.3
 author=Marios S. Kyriakou, George A. Christou, KIOS Research and Innovation Center of Excellence (KIOS CoE)
 email=mariosmsk@gmail.com, george.a.christou@gmail.com
 
@@ -25,7 +25,9 @@ repository=https://github.com/KIOS-Research/QWeather/
 # Uncomment the following line and add your changelog:
 changelog=2018-02-20  QWeather 0.2:
 		Replace txt input with csv. Update data. Update maximum locations to 750.
-		
+	  2018-07-06  QWeather 3.0.3:
+		Update max locations to 1000.
+
 # Tags are comma separated with spaces allowed
 tags=weather, temperature, wind direction, wind speed, humidity, pressure, visibility, sunrise, sunset, yahoo api
 

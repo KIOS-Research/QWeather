@@ -238,7 +238,7 @@ class QWeather:
         self.customBox()
 
         self.dlg.comboBox.clear()
-        db_list = ['World Capitals','Afghanistan','Aland','Albania','Algeria','American Samoa','Andorra','Angola','Antarctica','Antigua and Barbuda','Argentina','Armenia','Aruba','Australia','Austria','Azerbaijan','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bermuda','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','Brunei','Bulgaria','Burkina Faso','Burundi','Cambodia','Cameroon','Canada','Cape Verde','Cayman Islands','Central African Republic','Chad','Chile','China','Colombia','Comoros','Congo (Brazzaville)','Congo (Kinshasa)','Cook Islands','Costa Rica','Croatia','Cuba','Curacao','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Dominican Republic','East Timor','Ecuador','Egypt','El Salvador','Equatorial Guinea','Eritrea','Estonia','Ethiopia','Falkland Islands','Faroe Islands','Federated States of Micronesia','Fiji','Finland','France','French Polynesia','Gabon','Georgia','Germany','Ghana','Gibraltar','Greece','Greenland','Grenada','Guam','Guatemala','Guinea','Guinea Bissau','Guyana','Haiti','Honduras','Hong Kong S.A.R.','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Isle of Man','Israel','Italy','Ivory Coast','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Kiribati','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Liechtenstein','Lithuania','Luxembourg','Macau S.A.R','Macedonia','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Marshall Islands','Mauritania','Mauritius','Mexico','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar','Namibia','Nepal','Netherlands','New Caledonia','New Zealand','Nicaragua','Niger','Nigeria','North Korea','Northern Mariana Islands','Norway','Oman','Pakistan','Palau','Palestine','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Poland','Portugal','Puerto Rico','Qatar','Romania','Russia','Rwanda','Saint Kitts and Nevis','Saint Lucia','Saint Vincent and the Grenadines','Samoa','San Marino','Sao Tome and Principe','Saudi Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Slovakia','Slovenia','Solomon Islands','Somalia','Somaliland','South Africa','South Georgia and the Islands','South Korea','South Sudan','Spain','Sri Lanka','Sudan','Suriname','Svalbard and Jan Mayen Islands','Swaziland','Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','The Bahamas','The Gambia','Togo','Tonga','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Turks and Caicos Islands','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States Virgin Islands','United States of America','Uruguay','Uzbekistan','Vanuatu','Vatican (Holy Sea)','Venezuela','Vietnam','Western Sahara','Yemen','Zambia','Zimbabwe']
+        db_list = ['World Capitals','Afghanistan','Aland','Albania','Algeria','American Samoa','Andorra','Angola','Antarctica','Antigua and Barbuda','Argentina','Armenia','Aruba','Australia','Austria','Azerbaijan','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bermuda','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','Brunei','Bulgaria','Burkina Faso','Burundi','Cambodia','Cameroon','Canada','Cape Verde','Cayman Islands','Central African Republic','Chad','Chile','China','Colombia','Comoros','Congo (Brazzaville)','Congo (Kinshasa)','Cook Islands','Costa Rica','Croatia','Cuba','Curacao','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Dominican Republic','East Timor','Ecuador','Egypt','El Salvador','Equatorial Guinea','Eritrea','Estonia','Ethiopia','Falkland Islands','Faroe Islands','Federated States of Micronesia','Fiji','Finland','France','French Polynesia','Gabon','Georgia','Germany','Ghana','Gibraltar','Greece','Greenland','Grenada','Guam','Guatemala','Guinea','Guinea Bissau','Guyana','Haiti','Honduras','Hong Kong S.A.R.','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Isle of Man','Israel','Italy','Ivory Coast','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Kiribati','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Liechtenstein','Lithuania','Luxembourg','Macau S.A.R','Macedonia','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Marshall Islands','Mauritania','Mauritius','Mexico','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar','Namibia','Nepal','Netherlands','New Caledonia','New Zealand','Nicaragua','Niger','Nigeria','North Korea','Northern Mariana Islands','Norway','Oman','Pakistan','Palau','Palestine','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Poland','Portugal','Puerto Rico','Qatar','Romania','Russia','Rwanda','Saint Kitts and Nevis','Saint Lucia','Saint Vincent and the Grenadines','Samoa','San Marino','Sao Tome and Principe','Saudi Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Slovakia','Slovenia','Solomon Islands','Somalia','Somaliland','South Africa','South Georgia and the Islands','South Korea','South Sudan','Spain','Sri Lanka','Sudan','Suriname','Svalbard and Jan Mayen Islands','Swaziland','Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','The Bahamas','The Gambia','Togo','Tonga','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Turks and Caicos Islands','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States Virgin Islands','USA','Uruguay','Uzbekistan','Vanuatu','Vatican (Holy Sea)','Venezuela','Vietnam','Western Sahara','Yemen','Zambia','Zimbabwe']
 
         self.dlg.comboBox.addItems(db_list)
         self.dlg.comboBox.setCurrentText(self.current)
@@ -295,9 +295,18 @@ class QWeather:
                 if self.current.upper() in mm:
                     self.all_cities.append(mm[:-1])
         else:
-            f = open(self.csvFile, 'r')
-            self.all_cities = [line.rstrip('\n').upper() for line in f]
-            f.close()
+            try:
+                f = open(self.csvFile, 'r')
+                self.all_cities = [line.rstrip('\n').upper() for line in f]
+                f.close()
+            except:
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Warning)
+                msgBox.setWindowTitle('Warning')
+                msgBox.setText('Please define a csv file path.')
+                msgBox.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowCloseButtonHint)
+                msgBox.exec_()
+                return
 
         self.outQWeatherGeoJson = self.plugin_dir + '\\QWeather.geojson'
         basename = os.path.basename(self.outQWeatherGeoJson)
@@ -318,11 +327,11 @@ class QWeather:
         if self.iface.actionMapTips().isChecked() == False:
             self.iface.actionMapTips().trigger()
 
-        if len(self.all_cities)> 750:
+        if len(self.all_cities)> 1000:
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Warning)
             msgBox.setWindowTitle('Warning')
-            msgBox.setText('Maximum locations must be below from 750.')
+            msgBox.setText('Maximum locations must be below from 1000.')
             msgBox.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowCloseButtonHint)
             msgBox.exec_()
             self.dlg.progressBar.setValue(100)
@@ -359,10 +368,17 @@ class QWeather:
             data = self.callQuery()
             self.close_file = False
             self.createJsonFiles(data, False)
-            self.all_cities = self.tmp_cities[351:]
+            self.all_cities = self.tmp_cities[351:700]
             data = self.callQuery()
-            self.close_file = True
-            self.createJsonFiles(data, True)
+            if len(self.all_cities) > 701:
+                self.all_cities = self.tmp_cities[701:]
+                self.close_file = False
+                data = self.callQuery()
+                self.close_file = True
+                self.createJsonFiles(data, True)
+            else:
+                self.close_file = True
+                self.createJsonFiles(data, True)
         else:
             self.close_file = True
             data = self.callQuery()
@@ -480,6 +496,7 @@ class QWeather:
             yql_query = 'select *  from weather.forecast  where woeid in (     select woeid      from geo.places(1)      where text = "' + str(self.all_cities[0]) + '")' + ' and u="' + self.unit + '"'
 
         yql_url = "https://query.yahooapis.com/v1/public/yql?" + parse.urlencode({'q': yql_query}) + "&format=json"
+
         result = request.urlopen(yql_url).read()
         data = json.loads(result)
         return data
