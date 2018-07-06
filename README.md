@@ -1,5 +1,5 @@
-# WeatherInfo
+# QWeather
 
-QGIS3 plugin
+QGIS2 plugin
 
 This tool can be used to get weather using Yahoo Weather API.

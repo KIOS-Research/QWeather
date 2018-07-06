@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>WeatherInfo</string>
+   <string>QWeather</string>
   </property>
   <property name="whatsThis">
    <string/>
