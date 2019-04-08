@@ -23,19 +23,18 @@
 from qgis.PyQt.QtWidgets import QAction, QFileDialog, QMessageBox
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, Qt
-from qgis.core import QgsProject, QgsRectangle
+from qgis.core import QgsProject, QgsRectangle, QgsTask, QgsApplication
 # Initialize Qt resources from file resources.py
 from . import resources
 # Import the code for the dialog
 from .QWeather_dialog import QWeatherDialog
-import os.path
-import uuid
-import platform
-# QWeather
-from urllib import parse, request
-from xml.dom import minidom
-import json
-import re
+import os.path, re, json
+
+# Yahoo API
+import time, uuid, urllib.parse, urllib.request
+from json import loads
+import hmac, hashlib
+from base64 import b64encode
 
 class QWeather:
     """QGIS Plugin Implementation."""
@@ -73,6 +72,7 @@ class QWeather:
         # TODO: We are going to let the user set this up in a future iteration
         self.toolbar = self.iface.addToolBar(u'QWeather')
         self.toolbar.setObjectName(u'QWeather')
+        self.key1 = '9Q2gyTzBLVGVSTWdoJnM9Y29uc'
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -165,6 +165,66 @@ class QWeather:
 
         return action
 
+    def _generate_signature(self, key, data):
+        key_bytes = bytes(key, 'utf-8')
+        data_bytes = bytes(data, 'utf-8')
+        signature = hmac.new(
+            key_bytes,
+            data_bytes,
+            hashlib.sha1
+        ).digest()
+        return b64encode(signature).decode()
+
+    def get_yahoo_weather(self, location, temp_type, app_id, consumer_key, consumer_secret, url='https://weather-ydn-yql.media.yahoo.com/forecastrss'  ):
+        # Basic info
+        method = 'GET'
+        concat = '&'
+        query = {
+            'location': location,
+            'format': 'json',
+            'u': temp_type
+        }
+        oauth = {
+            'oauth_consumer_key': consumer_key,
+            'oauth_nonce': uuid.uuid4().hex,
+            'oauth_signature_method': 'HMAC-SHA1',
+            'oauth_timestamp': str(int(time.time())),
+            'oauth_version': '1.0'
+        }
+
+        # Prepare signature string (merge all params and SORT them)
+        merged_params = query.copy()
+        merged_params.update(oauth)
+        sorted_params = [k + '=' + urllib.parse.quote(merged_params[k], safe='') for k in sorted(merged_params.keys())]
+        signature_base_str = method + concat + urllib.parse.quote(url, safe='') + concat + urllib.parse.quote(
+            concat.join(sorted_params), safe='')
+
+        # Generate signature
+        composite_key = urllib.parse.quote(
+            consumer_secret,
+            safe=''
+        ) + concat
+        oauth_signature = self._generate_signature( composite_key, signature_base_str )
+
+        # Prepare Authorization header
+        oauth['oauth_signature'] = oauth_signature
+        auth_header = (
+                'OAuth ' +
+                ', '.join(
+                    [
+                        '{}="{}"'.format(k, v)
+                        for k, v in oauth.items()
+                    ]
+                )
+        )
+
+        # Send request
+        url = url + '?' + urllib.parse.urlencode(query)
+        request = urllib.request.Request(url)
+        request.add_header('Authorization', auth_header)
+        request.add_header('X-Yahoo-App-Id', app_id)
+        response = urllib.request.urlopen(request).read()
+        return loads(response)
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
@@ -184,7 +244,7 @@ class QWeather:
 
         self.dlg = QWeatherDialog()
         self.dlg.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowCloseButtonHint)
-
+        self.key2 = 'VtZXJzZWNyZXQmc3Y9MCZ4PTZl'
         self.dlg.ok.clicked.connect(self.ok)
         self.dlg.closebutton.clicked.connect(self.close)
         self.dlg.toolButtonImport.clicked.connect(self.toolButtonImport)
@@ -195,6 +255,9 @@ class QWeather:
         self.reload = False
         self.dlg.checkBox.setChecked(True)
         self.reloadButton.setEnabled(False)
+        self.app_id = 'IyELbl3e'
+        self.consumer_key = 'dj0yJmk' + self.key1 + '3' + self.key2
+        self.consumer_secret = 'e9962f3287764230d163045f737f9ad81428cdcc'
 
     def reloadWeather(self):
         #if len(QgsProject.instance().mapLayersByName(self.layerTemp)) != 0:
@@ -231,9 +294,8 @@ class QWeather:
         if self.csvFile==None:
             self.csvFile = self.plugin_dir + '/World Capitals.csv'
         self.dlg.imp.setText(self.csvFile)
-
-        self.dlg.progressBar.setValue(0)
         self.dlg.Celsius.setChecked(True)
+        self.dlg.progressBar.setValue(0)
 
         self.customBox()
 
@@ -266,6 +328,122 @@ class QWeather:
         msgBox.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowCloseButtonHint)
         msgBox.exec_()
         return True
+
+    #def call_import_temps(self):
+    #    self.taskTemps = QgsTask.fromFunction(u'QWeather', self.import_temps_task,
+    #                             on_finished=self.completed, wait_time=4)
+    #    QgsApplication.taskManager().addTask(self.taskTemps)
+
+    def import_temps_task(self):
+        self.geoinfo = []
+        for i, location in enumerate(self.all_cities):
+            #self.taskTemps.setProgress(i / len(self.all_cities))
+            self.dlg.progressBar.setValue((i / len(self.all_cities))*100)
+            data = self.get_yahoo_weather(
+                location, self.unit,
+                self.app_id,
+                self.consumer_key,
+                self.consumer_secret,
+                url='https://weather-ydn-yql.media.yahoo.com/forecastrss'
+            )
+
+            if ['location'] == {}:
+                continue
+
+            try:
+                City = data['location']['city']
+                Country = data['location']['country']
+                Region = data['location']['region']
+                Direction = str(data['current_observation']['wind']['direction'])
+                Speed = str(data['current_observation']['wind']['speed'])
+                Humidity = str(data['current_observation']['atmosphere']['humidity'])
+                Pressure = str(data['current_observation']['atmosphere']['pressure'])
+                Visibility = str(data['current_observation']['atmosphere']['visibility'])
+                Sunrise = str(data['current_observation']['astronomy']['sunrise'])
+                Sunset = str(data['current_observation']['astronomy']['sunset'])
+                Lon = data['location']['long']
+                Lat = data['location']['lat']
+                Temp = str(data['current_observation']['condition']['temperature'])
+                Date = time.ctime(int(str(data['current_observation']['pubDate'])))
+                IconTmp = data['current_observation']['condition']['text']
+                # match = re.search(r'src="(.*?)"', IconTmp)
+                Icon = ''  # match[0][5:-1]
+            except:
+                pass
+            try:
+                geo_info = {"type": "Feature",
+                            "properties": {'City': City, 'Temp': Temp, 'Direction': Direction + self.unitDirection,
+                                           'Speed': Speed + self.unitSpeed,
+                                           'Humidity': Humidity + self.unitHumidity,
+                                           'Pressure': Pressure + self.unitPressure,
+                                           'Visibility': Visibility + self.unitVisibility, 'Sunrise': Sunrise,
+                                           'Sunset': Sunset,
+                                           'Unit': self.unit, 'Icon': Icon,
+                                           'Country': Country.replace('ô', 'o').replace('´', ''),
+                                           'Region': Region.replace('´', ''), 'Lon': str(Lon), 'Date': Date,
+                                           'Lat': str(Lat)},
+                            "geometry": {"coordinates": [Lon, Lat], "type": "Point"}}
+                self.geoinfo.append(geo_info)
+
+                #if self.taskTemps.isCanceled():
+                #    self.stopped(self.taskTemps)
+                #    self.taskTemps.destroyed()
+                #    return None
+            except:
+                pass
+
+        return True
+
+    #def stopped(self, task):
+    #    QgsMessageLog.logMessage(
+    #        'Task "{name}" was canceled'.format(
+    #            name=task.description()),
+    #        'QWeather', Qgis.Info)
+
+    def completed(self):
+        geojson = {"type": "FeatureCollection",
+                   "name": self.layerTemp,
+                   "crs": {"type": "name", "properties": {"name": "crs:OGC:1.3:CRS84"}},
+                   "features": self.geoinfo}
+
+        geofile = open(self.outQWeatherGeoJson, 'w')
+        json.dump(geojson, geofile)
+        geofile.close()
+
+        # print region_not_support
+        def addQWeatherLayer():
+            self.QWeather = self.iface.addVectorLayer(self.outQWeatherGeoJson,
+                                                      self.layerTemp, "ogr")
+            self.QWeather.loadNamedStyle(self.plugin_dir + "/icons/" + self.style + ".qml")
+
+            self.QWeather.setReadOnly()
+
+        if len(QgsProject.instance().mapLayersByName(self.layerTemp)) == 0:
+            addQWeatherLayer()
+        else:
+            for x in self.iface.mapCanvas().layers():
+                if x.name() == self.layerTemp:
+                    self.QWeather = x
+                    QgsProject.instance().removeMapLayer(self.QWeather.id())
+                    addQWeatherLayer()
+        try:
+            self.iface.mapCanvas().setExtent(self.QWeather.extent())
+            self.QWeather.reload()
+            self.QWeather.triggerRepaint()
+        except:
+            pass
+
+        ###########################################
+
+        self.dlg.ok.setEnabled(True)
+        self.dlg.closebutton.setEnabled(True)
+        if not self.dlg.checkBox.isChecked():
+            self.dlg.toolButtonImport.setEnabled(False)
+        else:
+            self.dlg.toolButtonImport.setEnabled(True)
+
+        self.reloadButton.setEnabled(True)
+        self.dlg.progressBar.setValue(100)
 
     def ok(self):
         if self.reload == False:
@@ -334,9 +512,10 @@ class QWeather:
             msgBox.setText('Maximum locations must be below from 1000.')
             msgBox.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowCloseButtonHint)
             msgBox.exec_()
+            ###########################################
+
             self.dlg.progressBar.setValue(100)
             self.dlg.progressBar.setValue(0)
-            ###########################################
 
             self.dlg.ok.setEnabled(True)
             self.dlg.closebutton.setEnabled(True)
@@ -362,141 +541,7 @@ class QWeather:
             self.unitPressure = " psi"
             self.style = 'weather_f'
 
-        if len(self.all_cities) > 350:
-            self.tmp_cities = self.all_cities
-            self.all_cities = self.tmp_cities[:350]
-            data = self.callQuery()
-            self.close_file = False
-            self.createJsonFiles(data, False)
-            self.all_cities = self.tmp_cities[351:700]
-            data = self.callQuery()
-            if len(self.all_cities) > 701:
-                self.all_cities = self.tmp_cities[701:]
-                self.close_file = False
-                data = self.callQuery()
-                self.close_file = True
-                self.createJsonFiles(data, True)
-            else:
-                self.close_file = True
-                self.createJsonFiles(data, True)
-        else:
-            self.close_file = True
-            data = self.callQuery()
-            self.createJsonFiles(data, False)
-
-        self.dlg.progressBar.setValue(100)
-        ###########################################
-
-        self.dlg.ok.setEnabled(True)
-        self.dlg.closebutton.setEnabled(True)
-        if not self.dlg.checkBox.isChecked():
-            self.dlg.toolButtonImport.setEnabled(False)
-        else:
-            self.dlg.toolButtonImport.setEnabled(True)
-
-        self.reloadButton.setEnabled(True)
-
-    def createJsonFiles(self, data, f_QWeather):
-
-        if f_QWeather == False:
-            self.dlg.progressBar.setValue(10)
-            self.f_fileWeather = open(self.outQWeatherGeoJson, "w")
-            self.f_fileWeather.write('''{ "type": "FeatureCollection", ''')
-            self.f_fileWeather.write(
-                '''"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } }, ''')
-            self.f_fileWeather.write('\n')
-            self.f_fileWeather.write('"features": [')
-
-        for i in range(int(data['query']['count'])):
-            self.dlg.progressBar.setValue(40)
-            try:
-                try:
-                    City = data['query']['results']['channel'][i]['location']['city']
-                    Country = data['query']['results']['channel'][i]['location']['country']
-                    Region = data['query']['results']['channel'][i]['location']['region']
-                    Direction = data['query']['results']['channel'][i]['wind']['direction']
-                    Speed = data['query']['results']['channel'][i]['wind']['speed']
-                    Humidity = data['query']['results']['channel'][i]['atmosphere']['humidity']
-                    Pressure = data['query']['results']['channel'][i]['atmosphere']['pressure']
-                    Visibility = data['query']['results']['channel'][i]['atmosphere']['visibility']
-                    Sunrise = data['query']['results']['channel'][i]['astronomy']['sunrise']
-                    Sunset = data['query']['results']['channel'][i]['astronomy']['sunset']
-                    Lon = data['query']['results']['channel'][i]['item']['long']
-                    Lat = data['query']['results']['channel'][i]['item']['lat']
-                    Temp = data['query']['results']['channel'][i]['item']['condition']['temp']
-                    Date = data['query']['results']['channel'][i]['item']['condition']['date']
-                    IconTmp = data['query']['results']['channel'][i]['item']['description']
-                    match = re.search(r'src="(.*?)"', IconTmp)
-                    Icon = match[0][5:-1]
-                except:
-                    City = data['query']['results']['channel']['location']['city']
-                    Country = data['query']['results']['channel']['location']['country']
-                    Region = data['query']['results']['channel']['location']['region']
-                    Direction = data['query']['results']['channel']['wind']['direction']
-                    Speed = data['query']['results']['channel']['wind']['speed']
-                    Humidity = data['query']['results']['channel']['atmosphere']['humidity']
-                    Pressure = data['query']['results']['channel']['atmosphere']['pressure']
-                    Visibility = data['query']['results']['channel']['atmosphere']['visibility']
-                    Sunrise = data['query']['results']['channel']['astronomy']['sunrise']
-                    Sunset = data['query']['results']['channel']['astronomy']['sunset']
-                    Lon = data['query']['results']['channel']['item']['long']
-                    Lat = data['query']['results']['channel']['item']['lat']
-                    Temp = data['query']['results']['channel']['item']['condition']['temp']
-                    Date = data['query']['results']['channel']['item']['condition']['date']
-                    IconTmp = data['query']['results']['channel']['item']['description']
-                    match = re.search(r'src="(.*?)"', IconTmp)
-                    Icon = match[0][5:-1]
-
-                self.f_fileWeather.write(
-                '{ "type": "Feature", "properties": {  "City": ' + '"' + City + '"' + ', "Temp": '+ '"' + Temp + '"'
-                + ', "Direction": ' + '"' + Direction+self.unitDirection + '"'  + ', "Speed": ' + '"' + Speed+self.unitSpeed + '"'
-                + ', "Humidity": ' + '"' + Humidity+self.unitHumidity + '"'  + ', "Pressure": ' + '"' + Pressure+self.unitPressure + '"' + ', "Visibility": ' + '"' + Visibility+self.unitVisibility + '"'
-                + ', "Sunrise": ' + '"' + Sunrise + '"'  + ', "Sunset": ' + '"' + Sunset + '"'
-                + ', "Unit": ' + '"' + self.unit + '"'  + ', "Icon": ' + '"' + Icon + '"'
-                + ', "Country": ' + '"' + Country.replace('ô','o').replace('´','') + '"'  + ', "Region": ' + '"' + Region.replace('´','') + '"'
-                + ', "Lon": ' + '"' + Lon + '"' + ', "Date": ' + '"' + Date + '"' + ', "Lat": ' + '"' + Lat + '"' +
-                ',}, "geometry": { "type": "Point",  "coordinates": ' + '[' + Lon + ',' + Lat + ']')
-                self.f_fileWeather.write('}\n }')
-                self.f_fileWeather.write(',\n')
-
-            except:
-                pass
-
-        if self.close_file:
-            self.f_fileWeather.write('\n]\n}\n')
-            self.f_fileWeather.close()
-
-            # print region_not_support
-            def addQWeatherLayer():
-                self.QWeather = self.iface.addVectorLayer(self.outQWeatherGeoJson,
-                                                              self.layerTemp, "ogr")
-                self.QWeather.loadNamedStyle(self.plugin_dir + "/icons/"+self.style+".qml")
-
-                self.QWeather.setReadOnly()
-
-            if len(QgsProject.instance().mapLayersByName(self.layerTemp)) == 0:
-                addQWeatherLayer()
-            else:
-                for x in self.iface.mapCanvas().layers():
-                    if x.name() == self.layerTemp:
-                        self.QWeather = x
-                        QgsProject.instance().removeMapLayer(self.QWeather.id())
-                        addQWeatherLayer()
-            try:
-                self.iface.mapCanvas().setExtent(self.QWeather.extent())
-                self.QWeather.reload()
-                self.QWeather.triggerRepaint()
-            except:
-                pass
-
-    def callQuery(self):
-        if len(self.all_cities) > 1:
-            yql_query = 'select *  from weather.forecast  where woeid in (     select woeid      from geo.places(1)      where text in (' + str(self.all_cities)[1:-1] + '))'+' and u="'+ self.unit + '"'
-        else:
-            yql_query = 'select *  from weather.forecast  where woeid in (     select woeid      from geo.places(1)      where text = "' + str(self.all_cities[0]) + '")' + ' and u="' + self.unit + '"'
-
-        yql_url = "https://query.yahooapis.com/v1/public/yql?" + parse.urlencode({'q': yql_query}) + "&format=json"
-
-        result = request.urlopen(yql_url).read()
-        data = json.loads(result)
-        return data
+        self.import_temps_task()
+        self.completed()
+        #self.call_import_temps()
+        self.dlg.close()
