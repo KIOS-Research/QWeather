@@ -25,7 +25,7 @@ repository=https://github.com/KIOS-Research/QWeather/
 # Uncomment the following line and add your changelog:
 changelog=2020-05-14  QWeather 3.2:
 		Clear code, Update styles, include all units in fields
-		Minor fixes
+		Minor fixes, add option temperature, direction, humidity styles
 		2019-04-08  QWeather 3.1:
 		Update Yahoo API  
 		2018-07-06  QWeather 3.0.3:

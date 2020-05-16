@@ -20,7 +20,7 @@
  *                                                                         *
  ***************************************************************************/
 """
-from qgis.PyQt.QtWidgets import (QAction, QFileDialog, QMessageBox, QDialog)
+from qgis.PyQt.QtWidgets import (QAction, QFileDialog, QMessageBox, QDialog, QToolButton, QMenu, QWidgetAction, QComboBox)
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import (QSettings, QTranslator, qVersion, QCoreApplication, Qt)
 from qgis.core import (QgsProject, QgsRectangle, QgsTask, QgsApplication, Qgis, QgsMapLayerStyle)
@@ -90,6 +90,11 @@ class QWeather:
         self.toolbar = self.iface.addToolBar(u'QWeather')
         self.toolbar.setObjectName(u'QWeather')
         self.key1 = '9Q2gyTzBLVGVSTWdoJnM9Y29uc'
+
+        self.toolButton = QToolButton()
+        self.toolButton.setMenu(QMenu())
+        self.toolButton.setPopupMode(QToolButton.MenuButtonPopup)
+        self.toolbar.addWidget(self.toolButton)
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -246,11 +251,8 @@ class QWeather:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
         icon_path = ':/plugins/QWeather/weather.png'
-        self.add_action(
-            icon_path,
-            text=self.tr(u'Weather Info'),
-            callback=self.run,
-            parent=self.iface.mainWindow())
+        self.mainButton = QAction(QIcon(icon_path), "Weather Info", self.iface.mainWindow())
+        self.mainButton.triggered.connect(self.run)
 
         icon_path = ':/plugins/QWeather/icons/reload.png'
         self.reloadButton = self.add_action(
@@ -258,6 +260,26 @@ class QWeather:
             text=self.tr(u'Reload QWeather layer'),
             callback=self.reloadWeather,
             parent=self.iface.mainWindow())
+
+        self.style_temperature_btn = QAction(QIcon(''), "Temperature", self.iface.mainWindow())
+        self.style_temperature_btn.setText("Temperature")
+        self.style_temperature_btn.triggered.connect(self.style_temperature)
+
+        self.style_direction_btn = QAction(QIcon(''), "Direction", self.iface.mainWindow())
+        self.style_direction_btn.setText("Direction")
+        self.style_direction_btn.triggered.connect(self.style_direction)
+
+        self.style_humidity_btn = QAction(QIcon(''), "Humidity", self.iface.mainWindow())
+        self.style_humidity_btn.setText("Humidity")
+        self.style_humidity_btn.triggered.connect(self.style_humidity)
+
+        menu = self.toolButton.menu()
+        menu.addAction(self.mainButton)
+        menu.addAction(self.style_temperature_btn)
+        menu.addSeparator()
+        menu.addAction(self.style_direction_btn)
+        menu.addAction(self.style_humidity_btn)
+        self.toolButton.setDefaultAction(self.mainButton)
 
         self.dlg = QWeatherDialog()
         #self.dlg.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowCloseButtonHint)
@@ -275,6 +297,24 @@ class QWeather:
         self.app_id = 'IyELbl3e'
         self.consumer_key = 'dj0yJmk' + self.key1 + '3' + self.key2
         self.consumer_secret = 'e9962f3287764230d163045f737f9ad81428cdcc'
+
+    def style_humidity(self):
+        try:
+            self.QWeather.styleManager().setCurrentStyle('humidity')
+        except:
+            pass
+
+    def style_temperature(self):
+        try:
+            self.QWeather.styleManager().setCurrentStyle('temperature')
+        except:
+            pass
+
+    def style_direction(self):
+        try:
+            self.QWeather.styleManager().setCurrentStyle('direction')
+        except:
+            pass
 
     def reloadWeather(self):
         self.reload = True
@@ -352,7 +392,11 @@ class QWeather:
 
         self.dlg.comboBox.addItems(db_list)
         self.dlg.comboBox.setCurrentText(self.current)
-        self.dlg.show()
+        if self.dlg.isVisible():
+            self.dlg.close()
+            self.dlg.show()
+        else:
+            self.dlg.show()
 
     def close(self):
         self.dlg.close()
@@ -499,14 +543,22 @@ class QWeather:
         self.QWeather = self.iface.addVectorLayer(self.outQWeatherGeoJson,
                                                   self.layerTemp, "ogr")
         style_manager = self.QWeather.styleManager()
-
         # read valid style from layer
         style = QgsMapLayerStyle()
         style.readFromLayer(self.QWeather)
-        self.QWeather.loadNamedStyle(os.path.join(self.plugin_dir, "icons", "direction.qml"))
+        self.QWeather.loadNamedStyle(os.path.join(self.plugin_dir, "icons", self.style2 + ".qml"))
         style_manager.renameStyle("default", "direction")
 
-        # get style name from file
+        style_name = "humidity"
+        # add style with new name
+        style_manager.addStyle(style_name, style)
+        # set new style as current
+        style_manager.setCurrentStyle(style_name)
+        self.QWeather.loadNamedStyle(os.path.join(self.plugin_dir, "icons", "humidity.qml"))
+        style_manager.renameStyle(style_name, style_name)
+
+        style = QgsMapLayerStyle()
+        style.readFromLayer(self.QWeather)
         style_name = self.style
         # add style with new name
         style_manager.addStyle(style_name, style)
@@ -598,6 +650,7 @@ class QWeather:
             self.unitVisibility = "km"
             self.unitPressure = "hPa"
             self.style = 'weather_c'
+            self.style2 = 'direction_c'
 
         else:
             self.unit = 'F'
@@ -607,6 +660,7 @@ class QWeather:
             self.unitVisibility = "mi"
             self.unitPressure = "psi"
             self.style = 'weather_f'
+            self.style2 = 'direction_f'
 
         self.geoinfo = []
         self.call_import_temps_task()
