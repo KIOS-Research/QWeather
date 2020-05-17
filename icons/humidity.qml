@@ -1,23 +1,23 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis simplifyMaxScale="1" simplifyDrawingTol="1" styleCategories="AllStyleCategories" hasScaleBasedVisibilityFlag="0" minScale="100000000" maxScale="0" simplifyAlgorithm="0" labelsEnabled="1" simplifyLocal="1" readOnly="1" version="3.13.0-Master" simplifyDrawingHints="0">
+<qgis simplifyDrawingHints="0" minScale="100000000" simplifyLocal="1" simplifyMaxScale="1" simplifyDrawingTol="1" styleCategories="AllStyleCategories" hasScaleBasedVisibilityFlag="0" labelsEnabled="1" readOnly="1" simplifyAlgorithm="0" version="3.12.0-București" maxScale="0">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
     <Searchable>1</Searchable>
   </flags>
-  <renderer-v2 enableorderby="0" type="RuleRenderer" symbollevels="0" forceraster="0">
+  <renderer-v2 type="RuleRenderer" forceraster="0" symbollevels="0" enableorderby="0">
     <rules key="{1ec63c13-2fe2-4453-9f82-b9526d38d0ba}">
-      <rule filter="(to_string(&quot;humidity&quot;)) >= 24.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 35.000000" label="24 - 35 %" key="{412017c1-1046-4002-b52f-76444a6c86a6}" symbol="0"/>
-      <rule filter="(to_string(&quot;humidity&quot;)) > 35.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 45.000000" label="35 - 45 %" key="{3ba65f9f-be43-46cb-aab0-7b032c343cc6}" symbol="1"/>
-      <rule filter="(to_string(&quot;humidity&quot;)) > 45.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 55.000000" label="45 - 55 %" key="{adac0696-9133-49a5-8287-fe4198d98347}" symbol="2"/>
-      <rule filter="(to_string(&quot;humidity&quot;)) > 55.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 65.000000" label="55 - 65 %" key="{8d0b3097-8154-4f3f-a1ff-6ab1976bd937}" symbol="3"/>
-      <rule filter="(to_string(&quot;humidity&quot;)) > 65.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 75.000000" label="65 - 75 %" key="{7291a84c-58ef-470c-aed6-6c22a678d51d}" symbol="4"/>
-      <rule filter="(to_string(&quot;humidity&quot;)) > 75.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 80.000000" label="75 - 80 %" key="{9410e550-00cf-4435-9059-14d57b436f35}" symbol="5"/>
-      <rule filter="(to_string(&quot;humidity&quot;)) > 80.000000" label="> 80 %" key="{76cc9462-c2f6-40fc-80f6-0969844d458b}" symbol="6"/>
+      <rule symbol="0" label="0 - 35 %" filter="(to_string(&quot;humidity&quot;)) >= 0.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 35.000000" key="{412017c1-1046-4002-b52f-76444a6c86a6}"/>
+      <rule symbol="1" label="35 - 45 %" filter="(to_string(&quot;humidity&quot;)) > 35.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 45.000000" key="{3ba65f9f-be43-46cb-aab0-7b032c343cc6}"/>
+      <rule symbol="2" label="45 - 55 %" filter="(to_string(&quot;humidity&quot;)) > 45.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 55.000000" key="{adac0696-9133-49a5-8287-fe4198d98347}"/>
+      <rule symbol="3" label="55 - 65 %" filter="(to_string(&quot;humidity&quot;)) > 55.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 65.000000" key="{8d0b3097-8154-4f3f-a1ff-6ab1976bd937}"/>
+      <rule symbol="4" label="65 - 75 %" filter="(to_string(&quot;humidity&quot;)) > 65.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 75.000000" key="{7291a84c-58ef-470c-aed6-6c22a678d51d}"/>
+      <rule symbol="5" label="75 - 80 %" filter="(to_string(&quot;humidity&quot;)) > 75.000000 AND (to_string(&quot;humidity&quot;)) &lt;= 80.000000" key="{9410e550-00cf-4435-9059-14d57b436f35}"/>
+      <rule symbol="6" label="> 80 %" filter="(to_string(&quot;humidity&quot;)) > 80.000000" key="{76cc9462-c2f6-40fc-80f6-0969844d458b}"/>
     </rules>
     <symbols>
-      <symbol alpha="0.995" clip_to_extent="1" type="marker" force_rhr="0" name="0">
-        <layer class="SimpleMarker" locked="0" enabled="1" pass="0">
+      <symbol type="marker" alpha="0.995" clip_to_extent="1" force_rhr="0" name="0">
+        <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
           <prop v="0" k="angle"/>
           <prop v="49,0,126,255" k="color"/>
           <prop v="1" k="horizontal_anchor_point"/>
@@ -51,8 +51,8 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="0.995" clip_to_extent="1" type="marker" force_rhr="0" name="1">
-        <layer class="SimpleMarker" locked="0" enabled="1" pass="0">
+      <symbol type="marker" alpha="0.995" clip_to_extent="1" force_rhr="0" name="1">
+        <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
           <prop v="0" k="angle"/>
           <prop v="0,125,255,255" k="color"/>
           <prop v="1" k="horizontal_anchor_point"/>
@@ -86,8 +86,8 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="0.995" clip_to_extent="1" type="marker" force_rhr="0" name="2">
-        <layer class="SimpleMarker" locked="0" enabled="1" pass="0">
+      <symbol type="marker" alpha="0.995" clip_to_extent="1" force_rhr="0" name="2">
+        <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
           <prop v="0" k="angle"/>
           <prop v="42,169,42,255" k="color"/>
           <prop v="1" k="horizontal_anchor_point"/>
@@ -121,8 +121,8 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="0.995" clip_to_extent="1" type="marker" force_rhr="0" name="3">
-        <layer class="SimpleMarker" locked="0" enabled="1" pass="0">
+      <symbol type="marker" alpha="0.995" clip_to_extent="1" force_rhr="0" name="3">
+        <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
           <prop v="0" k="angle"/>
           <prop v="159,255,0,255" k="color"/>
           <prop v="1" k="horizontal_anchor_point"/>
@@ -156,8 +156,8 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="0.995" clip_to_extent="1" type="marker" force_rhr="0" name="4">
-        <layer class="SimpleMarker" locked="0" enabled="1" pass="0">
+      <symbol type="marker" alpha="0.995" clip_to_extent="1" force_rhr="0" name="4">
+        <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
           <prop v="0" k="angle"/>
           <prop v="255,101,0,255" k="color"/>
           <prop v="1" k="horizontal_anchor_point"/>
@@ -191,8 +191,8 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="0.995" clip_to_extent="1" type="marker" force_rhr="0" name="5">
-        <layer class="SimpleMarker" locked="0" enabled="1" pass="0">
+      <symbol type="marker" alpha="0.995" clip_to_extent="1" force_rhr="0" name="5">
+        <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
           <prop v="0" k="angle"/>
           <prop v="255,34,144,255" k="color"/>
           <prop v="1" k="horizontal_anchor_point"/>
@@ -226,8 +226,8 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="0.995" clip_to_extent="1" type="marker" force_rhr="0" name="6">
-        <layer class="SimpleMarker" locked="0" enabled="1" pass="0">
+      <symbol type="marker" alpha="0.995" clip_to_extent="1" force_rhr="0" name="6">
+        <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
           <prop v="0" k="angle"/>
           <prop v="255,215,235,255" k="color"/>
           <prop v="1" k="horizontal_anchor_point"/>
@@ -265,12 +265,12 @@
   </renderer-v2>
   <labeling type="simple">
     <settings calloutType="simple">
-      <text-style textColor="9,38,180,255" namedStyle="Κανονικά" fontLetterSpacing="0" blendMode="0" fontStrikeout="0" fontWordSpacing="0" fontWeight="50" fontSizeMapUnitScale="3x:0,0,0,0,0,0" fontUnderline="0" fontCapitals="0" textOpacity="1" textOrientation="horizontal" fontFamily="MS Shell Dlg 2" fontSize="10" isExpression="1" fontSizeUnit="Point" multilineHeight="1" fontKerning="1" fieldName="CASE WHEN to_string(temperature_unit) = 'C'  THEN  to_string(city) +  to_string('\n') + to_string(to_string( &quot;humidity&quot;)) + ' ' + to_string(humidity_unit)&#xd;&#xa;  WHEN to_string(temperature_unit) = 'F' THEN to_string(city) +  to_string('\n') + to_string(to_string( &quot;humidity&quot;)) + ' ' + to_string(humidity_unit)&#xd;&#xa;END  " previewBkgrdColor="255,255,255,255" useSubstitutions="0" fontItalic="0">
-        <text-buffer bufferSizeUnits="MM" bufferNoFill="0" bufferDraw="1" bufferSize="0.3" bufferSizeMapUnitScale="3x:0,0,0,0,0,0" bufferBlendMode="0" bufferOpacity="1" bufferJoinStyle="128" bufferColor="255,255,255,255"/>
-        <text-mask maskedSymbolLayers="" maskSize="0" maskType="0" maskSizeUnits="MM" maskJoinStyle="128" maskEnabled="0" maskSizeMapUnitScale="3x:0,0,0,0,0,0" maskOpacity="1"/>
-        <background shapeOffsetMapUnitScale="3x:0,0,0,0,0,0" shapeRadiiX="0" shapeBorderColor="128,128,128,255" shapeSizeX="0" shapeRadiiUnit="MM" shapeFillColor="255,255,255,255" shapeSizeUnit="MM" shapeRotationType="0" shapeRadiiMapUnitScale="3x:0,0,0,0,0,0" shapeRadiiY="0" shapeSizeMapUnitScale="3x:0,0,0,0,0,0" shapeOffsetX="0" shapeDraw="0" shapeOffsetY="0" shapeJoinStyle="64" shapeRotation="0" shapeSizeY="0" shapeBorderWidth="0" shapeOpacity="1" shapeSVGFile="" shapeBorderWidthMapUnitScale="3x:0,0,0,0,0,0" shapeSizeType="0" shapeType="0" shapeBlendMode="0" shapeBorderWidthUnit="MM" shapeOffsetUnit="MM">
-          <symbol alpha="1" clip_to_extent="1" type="marker" force_rhr="0" name="markerSymbol">
-            <layer class="SimpleMarker" locked="0" enabled="1" pass="0">
+      <text-style fontWeight="50" textOpacity="1" fieldName="CASE WHEN to_string(temperature_unit) = 'C'  THEN  to_string(city) +  to_string('\n') + to_string(to_string( &quot;humidity&quot;)) + ' ' + to_string(humidity_unit)&#xd;&#xa;  WHEN to_string(temperature_unit) = 'F' THEN to_string(city) +  to_string('\n') + to_string(to_string( &quot;humidity&quot;)) + ' ' + to_string(humidity_unit)&#xd;&#xa;END  " fontSizeMapUnitScale="3x:0,0,0,0,0,0" fontSize="10" fontFamily="MS Shell Dlg 2" isExpression="1" textColor="9,38,180,255" multilineHeight="1" fontWordSpacing="0" fontUnderline="0" textOrientation="horizontal" useSubstitutions="0" fontCapitals="0" fontKerning="1" blendMode="0" fontStrikeout="0" fontItalic="0" fontLetterSpacing="0" namedStyle="Κανονικά" fontSizeUnit="Point" previewBkgrdColor="255,255,255,255">
+        <text-buffer bufferSizeUnits="MM" bufferColor="255,255,255,255" bufferOpacity="1" bufferSizeMapUnitScale="3x:0,0,0,0,0,0" bufferNoFill="0" bufferJoinStyle="128" bufferBlendMode="0" bufferDraw="1" bufferSize="0.3"/>
+        <text-mask maskedSymbolLayers="" maskSizeMapUnitScale="3x:0,0,0,0,0,0" maskSize="0" maskJoinStyle="128" maskEnabled="0" maskType="0" maskSizeUnits="MM" maskOpacity="1"/>
+        <background shapeOffsetX="0" shapeBorderWidthMapUnitScale="3x:0,0,0,0,0,0" shapeOpacity="1" shapeSizeMapUnitScale="3x:0,0,0,0,0,0" shapeSizeType="0" shapeRadiiX="0" shapeDraw="0" shapeRotation="0" shapeRadiiUnit="MM" shapeSizeX="0" shapeBlendMode="0" shapeSizeUnit="MM" shapeType="0" shapeSizeY="0" shapeRadiiMapUnitScale="3x:0,0,0,0,0,0" shapeOffsetUnit="MM" shapeOffsetY="0" shapeBorderWidth="0" shapeRotationType="0" shapeFillColor="255,255,255,255" shapeRadiiY="0" shapeSVGFile="" shapeBorderWidthUnit="MM" shapeOffsetMapUnitScale="3x:0,0,0,0,0,0" shapeBorderColor="128,128,128,255" shapeJoinStyle="64">
+          <symbol type="marker" alpha="1" clip_to_extent="1" force_rhr="0" name="markerSymbol">
+            <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
               <prop v="0" k="angle"/>
               <prop v="152,125,183,255" k="color"/>
               <prop v="1" k="horizontal_anchor_point"/>
@@ -299,7 +299,7 @@
             </layer>
           </symbol>
         </background>
-        <shadow shadowRadius="0.5" shadowOffsetGlobal="1" shadowOffsetUnit="MM" shadowOpacity="0.7" shadowScale="100" shadowOffsetDist="0.01" shadowColor="0,0,0,255" shadowRadiusAlphaOnly="0" shadowRadiusMapUnitScale="3x:0,0,0,0,0,0" shadowUnder="0" shadowOffsetMapUnitScale="3x:0,0,0,0,0,0" shadowBlendMode="6" shadowDraw="0" shadowRadiusUnit="MM" shadowOffsetAngle="135"/>
+        <shadow shadowRadiusUnit="MM" shadowUnder="0" shadowOffsetUnit="MM" shadowColor="0,0,0,255" shadowBlendMode="6" shadowOpacity="0.7" shadowDraw="0" shadowOffsetDist="0.01" shadowRadiusAlphaOnly="0" shadowRadiusMapUnitScale="3x:0,0,0,0,0,0" shadowOffsetMapUnitScale="3x:0,0,0,0,0,0" shadowOffsetAngle="135" shadowOffsetGlobal="1" shadowRadius="0.5" shadowScale="100"/>
         <dd_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -309,9 +309,9 @@
         </dd_properties>
         <substitutions/>
       </text-style>
-      <text-format placeDirectionSymbol="0" reverseDirectionSymbol="0" autoWrapLength="0" multilineAlign="1" leftDirectionSymbol="&lt;" rightDirectionSymbol=">" formatNumbers="0" addDirectionSymbol="0" wrapChar="" plussign="0" useMaxLineLengthForAutoWrap="1" decimals="3"/>
-      <placement overrunDistanceMapUnitScale="3x:0,0,0,0,0,0" yOffset="0.201" offsetUnits="Inch" centroidInside="0" polygonPlacementFlags="2" quadOffset="2" xOffset="0.101" distUnits="MM" priority="0" predefinedPositionOrder="TR,TL,BR,BL,R,L,TSR,BSR" repeatDistanceMapUnitScale="3x:0,0,0,0,0,0" placement="1" maxCurvedCharAngleIn="25" preserveRotation="1" rotationAngle="0" layerType="PointGeometry" overrunDistance="0" geometryGenerator="" centroidWhole="0" overrunDistanceUnit="MM" dist="0" repeatDistanceUnits="MM" distMapUnitScale="3x:0,0,0,0,0,0" labelOffsetMapUnitScale="3x:0,0,0,0,0,0" geometryGeneratorType="PointGeometry" repeatDistance="0" maxCurvedCharAngleOut="-25" placementFlags="10" offsetType="0" fitInPolygonOnly="0" geometryGeneratorEnabled="0"/>
-      <rendering obstacleType="0" displayAll="0" obstacleFactor="0.98" obstacle="0" scaleMin="1" minFeatureSize="0" maxNumLabels="2000" fontLimitPixelSize="0" zIndex="0" fontMaxPixelSize="10000" mergeLines="0" labelPerPart="0" upsidedownLabels="1" drawLabels="1" limitNumLabels="0" scaleMax="10000000" scaleVisibility="0" fontMinPixelSize="3"/>
+      <text-format leftDirectionSymbol="&lt;" decimals="3" placeDirectionSymbol="0" useMaxLineLengthForAutoWrap="1" plussign="0" multilineAlign="1" reverseDirectionSymbol="0" addDirectionSymbol="0" wrapChar="" autoWrapLength="0" formatNumbers="0" rightDirectionSymbol=">"/>
+      <placement labelOffsetMapUnitScale="3x:0,0,0,0,0,0" repeatDistance="0" xOffset="0.101" placement="1" maxCurvedCharAngleIn="25" maxCurvedCharAngleOut="-25" distUnits="MM" rotationAngle="0" overrunDistanceUnit="MM" centroidWhole="0" geometryGeneratorEnabled="0" quadOffset="2" yOffset="0.201" overrunDistance="0" overrunDistanceMapUnitScale="3x:0,0,0,0,0,0" fitInPolygonOnly="0" geometryGenerator="" preserveRotation="1" repeatDistanceUnits="MM" layerType="PointGeometry" placementFlags="10" dist="0" priority="0" geometryGeneratorType="PointGeometry" offsetUnits="Inch" repeatDistanceMapUnitScale="3x:0,0,0,0,0,0" distMapUnitScale="3x:0,0,0,0,0,0" predefinedPositionOrder="TR,TL,BR,BL,R,L,TSR,BSR" offsetType="0" centroidInside="0"/>
+      <rendering scaleMin="1" limitNumLabels="0" obstacle="0" scaleVisibility="0" upsidedownLabels="1" labelPerPart="0" scaleMax="10000000" mergeLines="0" fontMaxPixelSize="10000" minFeatureSize="0" fontMinPixelSize="3" zIndex="0" displayAll="0" drawLabels="1" obstacleFactor="0.98" fontLimitPixelSize="0" obstacleType="0" maxNumLabels="2000"/>
       <dd_properties>
         <Option type="Map">
           <Option type="QString" value="" name="name"/>
@@ -329,8 +329,7 @@
           </Option>
           <Option type="bool" value="false" name="drawToAllParts"/>
           <Option type="QString" value="0" name="enabled"/>
-          <Option type="QString" value="point_on_exterior" name="labelAnchorPoint"/>
-          <Option type="QString" value="&lt;symbol alpha=&quot;1&quot; clip_to_extent=&quot;1&quot; type=&quot;line&quot; force_rhr=&quot;0&quot; name=&quot;symbol&quot;>&lt;layer class=&quot;SimpleLine&quot; locked=&quot;0&quot; enabled=&quot;1&quot; pass=&quot;0&quot;>&lt;prop v=&quot;square&quot; k=&quot;capstyle&quot;/>&lt;prop v=&quot;5;2&quot; k=&quot;customdash&quot;/>&lt;prop v=&quot;3x:0,0,0,0,0,0&quot; k=&quot;customdash_map_unit_scale&quot;/>&lt;prop v=&quot;MM&quot; k=&quot;customdash_unit&quot;/>&lt;prop v=&quot;0&quot; k=&quot;draw_inside_polygon&quot;/>&lt;prop v=&quot;bevel&quot; k=&quot;joinstyle&quot;/>&lt;prop v=&quot;60,60,60,255&quot; k=&quot;line_color&quot;/>&lt;prop v=&quot;solid&quot; k=&quot;line_style&quot;/>&lt;prop v=&quot;0.3&quot; k=&quot;line_width&quot;/>&lt;prop v=&quot;MM&quot; k=&quot;line_width_unit&quot;/>&lt;prop v=&quot;0&quot; k=&quot;offset&quot;/>&lt;prop v=&quot;3x:0,0,0,0,0,0&quot; k=&quot;offset_map_unit_scale&quot;/>&lt;prop v=&quot;MM&quot; k=&quot;offset_unit&quot;/>&lt;prop v=&quot;0&quot; k=&quot;ring_filter&quot;/>&lt;prop v=&quot;0&quot; k=&quot;use_custom_dash&quot;/>&lt;prop v=&quot;3x:0,0,0,0,0,0&quot; k=&quot;width_map_unit_scale&quot;/>&lt;data_defined_properties>&lt;Option type=&quot;Map&quot;>&lt;Option type=&quot;QString&quot; value=&quot;&quot; name=&quot;name&quot;/>&lt;Option name=&quot;properties&quot;/>&lt;Option type=&quot;QString&quot; value=&quot;collection&quot; name=&quot;type&quot;/>&lt;/Option>&lt;/data_defined_properties>&lt;/layer>&lt;/symbol>" name="lineSymbol"/>
+          <Option type="QString" value="&lt;symbol type=&quot;line&quot; alpha=&quot;1&quot; clip_to_extent=&quot;1&quot; force_rhr=&quot;0&quot; name=&quot;symbol&quot;>&lt;layer pass=&quot;0&quot; locked=&quot;0&quot; class=&quot;SimpleLine&quot; enabled=&quot;1&quot;>&lt;prop v=&quot;square&quot; k=&quot;capstyle&quot;/>&lt;prop v=&quot;5;2&quot; k=&quot;customdash&quot;/>&lt;prop v=&quot;3x:0,0,0,0,0,0&quot; k=&quot;customdash_map_unit_scale&quot;/>&lt;prop v=&quot;MM&quot; k=&quot;customdash_unit&quot;/>&lt;prop v=&quot;0&quot; k=&quot;draw_inside_polygon&quot;/>&lt;prop v=&quot;bevel&quot; k=&quot;joinstyle&quot;/>&lt;prop v=&quot;60,60,60,255&quot; k=&quot;line_color&quot;/>&lt;prop v=&quot;solid&quot; k=&quot;line_style&quot;/>&lt;prop v=&quot;0.3&quot; k=&quot;line_width&quot;/>&lt;prop v=&quot;MM&quot; k=&quot;line_width_unit&quot;/>&lt;prop v=&quot;0&quot; k=&quot;offset&quot;/>&lt;prop v=&quot;3x:0,0,0,0,0,0&quot; k=&quot;offset_map_unit_scale&quot;/>&lt;prop v=&quot;MM&quot; k=&quot;offset_unit&quot;/>&lt;prop v=&quot;0&quot; k=&quot;ring_filter&quot;/>&lt;prop v=&quot;0&quot; k=&quot;use_custom_dash&quot;/>&lt;prop v=&quot;3x:0,0,0,0,0,0&quot; k=&quot;width_map_unit_scale&quot;/>&lt;data_defined_properties>&lt;Option type=&quot;Map&quot;>&lt;Option type=&quot;QString&quot; value=&quot;&quot; name=&quot;name&quot;/>&lt;Option name=&quot;properties&quot;/>&lt;Option type=&quot;QString&quot; value=&quot;collection&quot; name=&quot;type&quot;/>&lt;/Option>&lt;/data_defined_properties>&lt;/layer>&lt;/symbol>" name="lineSymbol"/>
           <Option type="double" value="0" name="minLength"/>
           <Option type="QString" value="3x:0,0,0,0,0,0" name="minLengthMapUnitScale"/>
           <Option type="QString" value="MM" name="minLengthUnit"/>
@@ -356,12 +355,12 @@
   <featureBlendMode>0</featureBlendMode>
   <layerOpacity>1</layerOpacity>
   <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
-    <DiagramCategory scaleBasedVisibility="0" backgroundColor="#ffffff" penWidth="0" labelPlacementMethod="XHeight" lineSizeScale="3x:0,0,0,0,0,0" barWidth="5" enabled="0" backgroundAlpha="255" showAxis="1" minScaleDenominator="0" maxScaleDenominator="1e+08" spacingUnit="MM" rotationOffset="270" scaleDependency="Area" direction="0" penAlpha="255" penColor="#000000" height="15" spacing="5" sizeType="MM" diagramOrientation="Up" opacity="1" lineSizeType="MM" spacingUnitScale="3x:0,0,0,0,0,0" width="15" sizeScale="3x:0,0,0,0,0,0" minimumSize="0">
+    <DiagramCategory sizeType="MM" lineSizeType="MM" penAlpha="255" backgroundColor="#ffffff" height="15" minimumSize="0" enabled="0" scaleBasedVisibility="0" spacingUnitScale="3x:0,0,0,0,0,0" minScaleDenominator="0" scaleDependency="Area" penWidth="0" penColor="#000000" spacing="5" direction="0" opacity="1" lineSizeScale="3x:0,0,0,0,0,0" diagramOrientation="Up" width="15" sizeScale="3x:0,0,0,0,0,0" labelPlacementMethod="XHeight" barWidth="5" backgroundAlpha="255" maxScaleDenominator="1e+08" showAxis="1" spacingUnit="MM" rotationOffset="270">
       <fontProperties description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" style=""/>
       <attribute field="" color="#000000" label=""/>
       <axisSymbol>
-        <symbol alpha="1" clip_to_extent="1" type="line" force_rhr="0" name="">
-          <layer class="SimpleLine" locked="0" enabled="1" pass="0">
+        <symbol type="line" alpha="1" clip_to_extent="1" force_rhr="0" name="">
+          <layer pass="0" locked="0" class="SimpleLine" enabled="1">
             <prop v="square" k="capstyle"/>
             <prop v="5;2" k="customdash"/>
             <prop v="3x:0,0,0,0,0,0" k="customdash_map_unit_scale"/>
@@ -390,7 +389,7 @@
       </axisSymbol>
     </DiagramCategory>
   </SingleCategoryDiagramRenderer>
-  <DiagramLayerSettings linePlacementFlags="18" dist="0" priority="0" placement="0" zIndex="0" showAll="1" obstacle="0">
+  <DiagramLayerSettings obstacle="0" priority="0" zIndex="0" placement="0" showAll="1" linePlacementFlags="18" dist="0">
     <properties>
       <Option type="Map">
         <Option type="QString" value="" name="name"/>
@@ -555,75 +554,75 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias field="country" index="0" name=""/>
-    <alias field="city" index="1" name=""/>
-    <alias field="region" index="2" name=""/>
-    <alias field="temperature" index="3" name=""/>
-    <alias field="temperature_unit" index="4" name=""/>
-    <alias field="date" index="5" name=""/>
-    <alias field="direction" index="6" name=""/>
-    <alias field="direction_unit" index="7" name=""/>
-    <alias field="speed" index="8" name=""/>
-    <alias field="speed_unit" index="9" name=""/>
-    <alias field="humidity" index="10" name=""/>
-    <alias field="humidity_unit" index="11" name=""/>
-    <alias field="pressure" index="12" name=""/>
-    <alias field="pressure_unit" index="13" name=""/>
-    <alias field="visibility" index="14" name=""/>
-    <alias field="visibility_unit" index="15" name=""/>
-    <alias field="sunrise" index="16" name=""/>
-    <alias field="sunset" index="17" name=""/>
-    <alias field="icon" index="18" name=""/>
-    <alias field="lat" index="19" name=""/>
-    <alias field="lon" index="20" name=""/>
+    <alias index="0" field="country" name=""/>
+    <alias index="1" field="city" name=""/>
+    <alias index="2" field="region" name=""/>
+    <alias index="3" field="temperature" name=""/>
+    <alias index="4" field="temperature_unit" name=""/>
+    <alias index="5" field="date" name=""/>
+    <alias index="6" field="direction" name=""/>
+    <alias index="7" field="direction_unit" name=""/>
+    <alias index="8" field="speed" name=""/>
+    <alias index="9" field="speed_unit" name=""/>
+    <alias index="10" field="humidity" name=""/>
+    <alias index="11" field="humidity_unit" name=""/>
+    <alias index="12" field="pressure" name=""/>
+    <alias index="13" field="pressure_unit" name=""/>
+    <alias index="14" field="visibility" name=""/>
+    <alias index="15" field="visibility_unit" name=""/>
+    <alias index="16" field="sunrise" name=""/>
+    <alias index="17" field="sunset" name=""/>
+    <alias index="18" field="icon" name=""/>
+    <alias index="19" field="lat" name=""/>
+    <alias index="20" field="lon" name=""/>
   </aliases>
   <excludeAttributesWMS/>
   <excludeAttributesWFS/>
   <defaults>
-    <default field="country" applyOnUpdate="0" expression=""/>
-    <default field="city" applyOnUpdate="0" expression=""/>
-    <default field="region" applyOnUpdate="0" expression=""/>
-    <default field="temperature" applyOnUpdate="0" expression=""/>
-    <default field="temperature_unit" applyOnUpdate="0" expression=""/>
-    <default field="date" applyOnUpdate="0" expression=""/>
-    <default field="direction" applyOnUpdate="0" expression=""/>
-    <default field="direction_unit" applyOnUpdate="0" expression=""/>
-    <default field="speed" applyOnUpdate="0" expression=""/>
-    <default field="speed_unit" applyOnUpdate="0" expression=""/>
-    <default field="humidity" applyOnUpdate="0" expression=""/>
-    <default field="humidity_unit" applyOnUpdate="0" expression=""/>
-    <default field="pressure" applyOnUpdate="0" expression=""/>
-    <default field="pressure_unit" applyOnUpdate="0" expression=""/>
-    <default field="visibility" applyOnUpdate="0" expression=""/>
-    <default field="visibility_unit" applyOnUpdate="0" expression=""/>
-    <default field="sunrise" applyOnUpdate="0" expression=""/>
-    <default field="sunset" applyOnUpdate="0" expression=""/>
-    <default field="icon" applyOnUpdate="0" expression=""/>
-    <default field="lat" applyOnUpdate="0" expression=""/>
-    <default field="lon" applyOnUpdate="0" expression=""/>
+    <default field="country" expression="" applyOnUpdate="0"/>
+    <default field="city" expression="" applyOnUpdate="0"/>
+    <default field="region" expression="" applyOnUpdate="0"/>
+    <default field="temperature" expression="" applyOnUpdate="0"/>
+    <default field="temperature_unit" expression="" applyOnUpdate="0"/>
+    <default field="date" expression="" applyOnUpdate="0"/>
+    <default field="direction" expression="" applyOnUpdate="0"/>
+    <default field="direction_unit" expression="" applyOnUpdate="0"/>
+    <default field="speed" expression="" applyOnUpdate="0"/>
+    <default field="speed_unit" expression="" applyOnUpdate="0"/>
+    <default field="humidity" expression="" applyOnUpdate="0"/>
+    <default field="humidity_unit" expression="" applyOnUpdate="0"/>
+    <default field="pressure" expression="" applyOnUpdate="0"/>
+    <default field="pressure_unit" expression="" applyOnUpdate="0"/>
+    <default field="visibility" expression="" applyOnUpdate="0"/>
+    <default field="visibility_unit" expression="" applyOnUpdate="0"/>
+    <default field="sunrise" expression="" applyOnUpdate="0"/>
+    <default field="sunset" expression="" applyOnUpdate="0"/>
+    <default field="icon" expression="" applyOnUpdate="0"/>
+    <default field="lat" expression="" applyOnUpdate="0"/>
+    <default field="lon" expression="" applyOnUpdate="0"/>
   </defaults>
   <constraints>
-    <constraint constraints="0" field="country" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="city" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="region" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="temperature" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="temperature_unit" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="date" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="direction" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="direction_unit" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="speed" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="speed_unit" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="humidity" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="humidity_unit" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="pressure" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="pressure_unit" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="visibility" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="visibility_unit" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="sunrise" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="sunset" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="icon" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="lat" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint constraints="0" field="lon" notnull_strength="0" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="0" field="country" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="city" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="region" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="temperature" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="temperature_unit" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="date" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="direction" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="direction_unit" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="speed" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="speed_unit" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="humidity" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="humidity_unit" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="pressure" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="pressure_unit" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="visibility" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="visibility_unit" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="sunrise" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="sunset" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="icon" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="lat" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="0" field="lon" unique_strength="0" exp_strength="0" notnull_strength="0"/>
   </constraints>
   <constraintExpressions>
     <constraint field="country" desc="" exp=""/>
@@ -652,7 +651,7 @@
   <attributeactions>
     <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
   </attributeactions>
-  <attributetableconfig sortExpression="&quot;humidity&quot;" sortOrder="0" actionWidgetStyle="dropDown">
+  <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="&quot;humidity&quot;">
     <columns>
       <column type="actions" width="-1" hidden="1"/>
       <column type="field" width="-1" hidden="0" name="country"/>
@@ -788,7 +787,6 @@ def my_form_open(dialog, layer, feature):
     <field labelOnTop="0" name="visibility"/>
     <field labelOnTop="0" name="visibility_unit"/>
   </labelOnTop>
-  <dataDefinedFieldProperties/>
   <widgets/>
   <previewExpression>city</previewExpression>
   <mapTip>&lt;style>&#xd;
