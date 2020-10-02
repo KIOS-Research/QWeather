@@ -23,7 +23,7 @@
 from qgis.PyQt.QtWidgets import (QAction, QFileDialog, QMessageBox, QDialog, QToolButton, QMenu, QWidgetAction, QComboBox)
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import (QSettings, QTranslator, qVersion, QCoreApplication, Qt)
-from qgis.core import (QgsProject, QgsRectangle, QgsTask, QgsApplication, Qgis, QgsMapLayerStyle)
+from qgis.core import (QgsProject, QgsRectangle, QgsTask, QgsApplication, Qgis, QgsMapLayerStyle, QgsMessageLog)
 # Initialize Qt resources from file resources.py
 from . import resources
 import os.path
